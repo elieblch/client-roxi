@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#5C1A2E">
+<meta name="theme-color" content="#2C1D14">
 <title>ROXI — Bar & Restaurant · Châtelain · Bruxelles</title>
 <meta name="description" content="ROXI, bar-restaurant rue du Bailli au cœur du quartier du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud — ouvert tous les jours dès 10h30.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,21 +11,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F5E9D7;
-  --surface:#5C1A2E;
-  --text:#5C1A2E;
-  --text-dim:#8A6A4A;
-  --accent:#5C1A2E;
-  --accent-soft:#5C1A2E;
-  --on-dark:#F5E9D7;
-  --line:rgba(92,26,46,.18);
-  --line-strong:rgba(92,26,46,.35);
+  --bg:#2C1D14;
+  --surface:#3D2A1F;
+  --text:#E8D5BA;
+  --text-dim:#C4A579;
+  --accent:#C4663A;
+  --accent-soft:#C4663A;
+  --highlight:#D4A843;
+  --line:rgba(196,102,58,.22);
+  --line-strong:rgba(196,102,58,.4);
   --display:'Baloo 2', system-ui, sans-serif;
   --serif:'Baloo 2', system-ui, sans-serif;
   --sans:'Nunito', system-ui, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-tap-highlight-color:transparent;color-scheme:light}
+html{-webkit-tap-highlight-color:transparent;color-scheme:dark}
 html.smooth{scroll-behavior:smooth}
 body{
   background:var(--bg);
@@ -47,7 +47,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   z-index:50;
   display:flex;align-items:center;justify-content:space-between;
   padding:.8rem 1.5rem;
-  background:rgba(245,233,215,.92);
+  background:rgba(44,29,20,.92);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
@@ -89,13 +89,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hero-bg{
   position:absolute;inset:0;
   background:url('photo-cocktail.png') center/cover;
-  filter:brightness(.42) saturate(.85) contrast(1.05) sepia(.25);
+  filter:brightness(.32) saturate(.95) contrast(1.05);
   z-index:0;
 }
 .hero-bg::after{
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(92,26,46,.55) 0%,rgba(92,26,46,.35) 45%,rgba(245,233,215,.95) 100%);
+  background:linear-gradient(180deg,rgba(44,29,20,.55) 0%,rgba(44,29,20,.4) 50%,rgba(44,29,20,.95) 100%);
 }
 .hero-inner{position:relative;z-index:1;width:100%;max-width:900px}
 
@@ -123,22 +123,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   line-height:1;
   margin-bottom:.6rem;
   text-wrap:balance;
-  color:var(--on-dark);
+  color:var(--accent);
 }
 .hero-italic{
   font-family:var(--sans);
   font-style:italic;
   font-weight:500;
   font-size:clamp(1rem,1.8vw,1.25rem);
-  color:var(--on-dark);
+  color:var(--accent-soft);
   margin-bottom:1.2rem;
   letter-spacing:.05rem;
-  opacity:.92;
 }
 .hero-divider{
   width:50px;height:1px;
-  background:var(--on-dark);
-  opacity:.7;
+  background:var(--accent-soft);
   margin:.8rem auto 1.2rem;
 }
 .hero-nav{
@@ -148,16 +146,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   letter-spacing:.3rem;
   text-transform:uppercase;
   margin-bottom:1.4rem;
-  color:var(--on-dark);
 }
 .hero-nav a{position:relative;padding:.3rem 0}
-.hero-nav a:hover{opacity:.7}
+.hero-nav a:hover{color:var(--accent)}
 .hero-nav a::after{
   content:'';
   position:absolute;
   bottom:0;left:50%;
   width:0;height:1px;
-  background:var(--on-dark);
+  background:var(--accent);
   transition:width .3s ease,left .3s ease;
 }
 .hero-nav a:hover::after{width:100%;left:0}
@@ -166,19 +163,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   display:flex;justify-content:center;
   gap:1rem;
 }
-.hero .social-row a{
-  border-color:var(--on-dark);
-  color:var(--on-dark);
-}
-.hero .social-row a:hover{border-color:var(--on-dark);color:var(--on-dark);background:rgba(245,233,215,.15)}
 .social-row a{
   width:36px;height:36px;
-  border:1px solid var(--accent);
+  border:1px solid var(--accent-soft);
   border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  color:var(--accent);
+  color:var(--accent-soft);
 }
-.social-row a:hover{border-color:var(--accent);color:var(--bg);background:var(--accent)}
+.social-row a:hover{border-color:var(--accent);color:var(--accent);background:rgba(212,168,67,.1)}
 .social-row svg{width:15px;height:15px}
 
 /* ============== SECTIONS ============== */
@@ -218,7 +210,7 @@ section{scroll-margin-top:80px}
   width:100%;
   height:8px;
   margin-top:.6rem;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'><path d='M0,4 Q12.5,0 25,4 T50,4 T75,4 T100,4' stroke='%235C1A2E' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'><path d='M0,4 Q12.5,0 25,4 T50,4 T75,4 T100,4' stroke='%23D4A843' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
   background-repeat:no-repeat;
   background-size:100% 100%;
 }
@@ -247,12 +239,12 @@ section{scroll-margin-top:80px}
   height:520px;
   object-fit:cover;
   border:1px solid var(--line);
-  filter:brightness(1.02) contrast(1.02) saturate(.95);
+  filter:brightness(.94) contrast(1.05);
 }
 .about-text{
   font-size:1.05rem;
   line-height:1.9;
-  color:var(--text);
+  color:var(--text-dim);
 }
 .about-text p + p{margin-top:1.2rem}
 .about-quote{
@@ -303,7 +295,7 @@ section{scroll-margin-top:80px}
 .menu-card::after{
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(92,26,46,.25) 0%,rgba(92,26,46,.6) 55%,rgba(92,26,46,.96) 100%);
+  background:linear-gradient(180deg,rgba(44,29,20,.2) 0%,rgba(44,29,20,.55) 60%,rgba(44,29,20,.95) 100%);
   z-index:1;
 }
 .menu-card-content{position:relative;z-index:2;width:100%}
@@ -314,21 +306,19 @@ section{scroll-margin-top:80px}
   letter-spacing:.2rem;
   text-transform:uppercase;
   margin-bottom:.3rem;
-  color:var(--on-dark);
+  color:var(--accent);
 }
 .menu-card-italic{
   font-family:var(--sans);
   font-style:italic;
-  color:var(--on-dark);
-  opacity:.85;
+  color:var(--accent-soft);
   font-size:1.02rem;
   margin-bottom:.6rem;
   font-weight:400;
 }
 .menu-card-desc{
   font-size:.92rem;
-  color:var(--on-dark);
-  opacity:.88;
+  color:var(--text-dim);
   line-height:1.6;
   margin-bottom:1rem;
 }
@@ -336,8 +326,8 @@ section{scroll-margin-top:80px}
   font-size:.78rem;
   letter-spacing:.3rem;
   text-transform:uppercase;
-  color:var(--on-dark);
-  border-top:1px solid rgba(245,233,215,.35);
+  color:var(--text);
+  border-top:1px solid var(--line-strong);
   padding-top:.8rem;
   font-variant-numeric:tabular-nums;
 }
@@ -355,19 +345,19 @@ section{scroll-margin-top:80px}
   text-transform:uppercase;
   font-family:var(--sans);
   font-weight:600;
-  color:var(--on-dark);
+  color:var(--accent);
   padding:.45rem .75rem;
-  border:1px solid rgba(245,233,215,.55);
-  background:rgba(45,12,22,.55);
+  border:1px solid rgba(212,168,67,.55);
+  background:rgba(20,12,8,.7);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
   transition:background .3s ease,color .3s ease,border-color .3s ease;
 }
 .menu-card[data-menu]:hover::before,
 .menu-card[data-menu]:focus-visible::before{
-  background:var(--on-dark);
-  color:var(--accent);
-  border-color:var(--on-dark);
+  background:var(--accent);
+  color:var(--bg);
+  border-color:var(--accent);
 }
 
 /* ============== GROUPE ============== */
@@ -381,10 +371,10 @@ section{scroll-margin-top:80px}
 .formule{
   padding:2.4rem 1.5rem;
   border:1px solid var(--line-strong);
-  background:rgba(92,26,46,.03);
+  background:rgba(196,102,58,.04);
   transition:background .3s ease,border-color .3s ease;
 }
-.formule:hover{background:rgba(92,26,46,.07);border-color:var(--accent)}
+.formule:hover{background:rgba(196,102,58,.08);border-color:var(--accent)}
 .formule-price{
   font-family:var(--serif);
   font-size:2.6rem;
@@ -423,7 +413,7 @@ section{scroll-margin-top:80px}
   margin-top:2.4rem;
   padding:1.2rem 1.5rem;
   border-left:2px solid var(--accent);
-  background:rgba(92,26,46,.06);
+  background:rgba(212,168,67,.06);
   font-style:italic;
   color:var(--text-dim);
   font-size:.9rem;
@@ -484,7 +474,7 @@ section{scroll-margin-top:80px}
 }
 .map-wrap iframe{
   width:100%;height:480px;border:0;
-  filter:saturate(.85) contrast(.95);
+  filter:invert(.9) hue-rotate(180deg) saturate(.8) brightness(.95);
 }
 .access-info{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
@@ -502,9 +492,8 @@ section{scroll-margin-top:80px}
 
 /* ============== FOOTER ============== */
 .footer{
-  border-top:1px solid var(--accent);
-  background:#5C1A2E;
-  color:var(--on-dark);
+  border-top:1px solid var(--accent-soft);
+  background:#1F140C;
   padding:5rem 1.5rem 3rem;
   text-align:center;
 }
@@ -512,42 +501,33 @@ section{scroll-margin-top:80px}
   width:96px;height:96px;
   margin:0 auto 1.4rem;
   object-fit:contain;
-  filter:brightness(1.05);
 }
 .footer-brand{
   font-family:var(--serif);
   font-size:2.2rem;font-weight:800;
   letter-spacing:.5rem;text-transform:uppercase;
   margin-bottom:.4rem;
-  color:var(--on-dark);
+  color:var(--accent);
 }
 .footer-tag{
   font-family:var(--sans);font-style:italic;font-weight:400;
-  color:var(--on-dark);opacity:.85;
+  color:var(--text-dim);
   margin-bottom:1.5rem;font-size:1.05rem;
 }
-.footer-divider{width:50px;height:1px;background:var(--on-dark);opacity:.4;margin:2rem auto}
+.footer-divider{width:50px;height:1px;background:var(--accent-soft);opacity:.4;margin:2rem auto}
 .footer-address{
   font-family:var(--sans);font-style:italic;font-weight:400;
-  font-size:1.1rem;color:var(--on-dark);line-height:1.7;margin-bottom:.5rem;
+  font-size:1.1rem;color:var(--text);line-height:1.7;margin-bottom:.5rem;
 }
 .footer-contact{
-  font-size:.9rem;color:var(--on-dark);opacity:.85;
+  font-size:.9rem;color:var(--text-dim);
   margin-bottom:2rem;letter-spacing:.05rem;
 }
-.footer-contact a:hover{opacity:1}
-.footer .social-row a{
-  border-color:var(--on-dark);
-  color:var(--on-dark);
-}
-.footer .social-row a:hover{
-  background:var(--on-dark);
-  color:var(--accent);
-}
+.footer-contact a:hover{color:var(--accent)}
 .footer-legal{
   margin-top:3rem;font-size:.7rem;
   letter-spacing:.25rem;text-transform:uppercase;
-  color:var(--on-dark);opacity:.65;
+  color:var(--text-dim);opacity:.7;
 }
 
 /* ============== ANIMATIONS ============== */
@@ -595,7 +575,7 @@ section{scroll-margin-top:80px}
 .modal.open{opacity:1;visibility:visible}
 .modal-backdrop{
   position:absolute;inset:0;
-  background:rgba(45,12,22,.85);
+  background:rgba(20,12,8,.92);
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
   cursor:pointer;
@@ -616,16 +596,16 @@ section{scroll-margin-top:80px}
   width:42px;height:42px;
   display:flex;align-items:center;justify-content:center;
   border-radius:50%;
-  border:1px solid var(--accent);
-  color:var(--accent);
-  background:rgba(245,233,215,.6);
+  border:1px solid var(--accent-soft);
+  color:var(--accent-soft);
+  background:rgba(20,12,8,.6);
   font-size:1.6rem;line-height:1;
   font-family:var(--sans);font-weight:300;
   transition:color .3s ease,border-color .3s ease,background .3s ease,transform .3s ease;
 }
 .modal-close:hover{
-  color:var(--bg);border-color:var(--accent);
-  background:var(--accent);transform:rotate(90deg);
+  color:var(--accent);border-color:var(--accent);
+  background:rgba(212,168,67,.15);transform:rotate(90deg);
 }
 .modal-content{
   overflow-y:auto;
@@ -689,7 +669,7 @@ section{scroll-margin-top:80px}
   align-items:start;
   gap:1.5rem;
   padding:.95rem 0;
-  border-bottom:1px dashed rgba(92,26,46,.18);
+  border-bottom:1px dashed rgba(196,102,58,.22);
 }
 .modal-row:last-child{border-bottom:none}
 
@@ -754,7 +734,7 @@ section{scroll-margin-top:80px}
   gap:1rem;
   align-items:start;
   padding:.95rem 0;
-  border-bottom:1px dashed rgba(92,26,46,.18);
+  border-bottom:1px dashed rgba(196,102,58,.22);
 }
 .modal-priced-row:last-child{border-bottom:none}
 .modal-priced-row .item-price{text-align:right}
@@ -773,6 +753,14 @@ body.modal-open{overflow:hidden}
   .item-price{font-size:.92rem}
   .menu-card[data-menu]::before{font-size:.6rem;padding:.35rem .6rem;letter-spacing:.14rem}
 }
+
+/* ============== MOUTARDE PONCTUEL ============== */
+.item-name .badge{background:var(--highlight);color:var(--bg)}
+.rating-stars{color:var(--highlight)}
+.formule-price{color:var(--highlight)}
+.hero-nav a:hover,
+.sticky-nav-links a:hover{color:var(--highlight)}
+::selection{background:var(--highlight);color:var(--bg)}
 </style>
 </head>
 <body>
@@ -780,7 +768,7 @@ body.modal-open{overflow:hidden}
 <!-- ============== STICKY NAV ============== -->
 <nav class="sticky-nav" id="stickyNav" aria-label="Navigation flottante">
   <a href="#top" class="sticky-nav-logo" data-nav aria-label="Retour en haut — ROXI">
-    <img src="Logos/roxi-logo-03-bordeaux-creme.svg" alt="Logo ROXI" width="56" height="56">
+    <img src="Logos/roxi-logo-04-terracotta-sable.svg" alt="Logo ROXI" width="56" height="56">
   </a>
   <div class="sticky-nav-links">
     <a href="#about" data-nav>À propos</a>
@@ -795,7 +783,7 @@ body.modal-open{overflow:hidden}
 <header class="hero" id="top">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <img class="hero-logo" src="Logos/roxi-logo-03-bordeaux-creme.svg" alt="Logo ROXI Bailli" width="240" height="240">
+    <img class="hero-logo" src="Logos/roxi-logo-04-terracotta-sable.svg" alt="Logo ROXI Bailli" width="240" height="240">
     <h1 class="visually-hidden">ROXI — Bar & Restaurant · Châtelain · Bruxelles</h1>
     <p class="hero-italic">Bar · Restaurant · Châtelain · Bruxelles</p>
     <div class="hero-divider"></div>
@@ -1011,7 +999,7 @@ body.modal-open{overflow:hidden}
 
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
-  <img class="footer-logo" src="Logos/roxi-logo-03-bordeaux-creme.svg" alt="Logo ROXI" width="96" height="96">
+  <img class="footer-logo" src="Logos/roxi-logo-04-terracotta-sable.svg" alt="Logo ROXI" width="96" height="96">
   <p class="footer-tag">Bar · Restaurant · Châtelain · depuis 2018</p>
 
   <div class="footer-divider"></div>
