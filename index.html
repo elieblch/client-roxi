@@ -1,14 +1,191 @@
 <!DOCTYPE html>
+<!--
+  =====================================================================
+  @canonical-domain: https://client-roxi.vercel.app
+  → URL provisoire (preview Vercel). Le jour où un domaine custom est
+    branché (ex: https://www.roxi.be), mettre à jour TOUTES les
+    occurrences via la commande suivante :
+
+    grep -rln "client-roxi.vercel.app" Roxi/ | xargs sed -i '' \
+      's|https://client-roxi.vercel.app|https://NOUVEAU-DOMAINE|g'
+
+    Endroits concernés (cf. notes projet section "Domaine canonique") :
+    - <link rel="canonical">      (head)
+    - og:url                      (Open Graph)
+    - JSON-LD : @id, url, logo, image (5 occurrences dans @graph)
+    - sitemap.xml                 (à créer bloc 3)
+    - robots.txt                  (Sitemap: line — bloc 3)
+  =====================================================================
+-->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1F3329">
 <title>ROXI — Bar & Restaurant · Châtelain · Bruxelles</title>
-<meta name="description" content="ROXI, bar-restaurant rue du Bailli au cœur du quartier du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud — ouvert tous les jours dès 10h30.">
+<meta name="description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+
+<!-- PROVISOIRE preview Vercel : noindex pour éviter d'indexer la preview Vercel.
+     🔴 À RETIRER le jour de la bascule sur le domaine custom (voir notes projet section 6). -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://client-roxi.vercel.app/">
+
+<!-- Preload LCP : hero image (critical perf, responsive) -->
+<link rel="preload" as="image"
+  imagesrcset="/photo-cocktail-mobile.webp 600w, /photo-cocktail.webp 1200w"
+  imagesizes="100vw"
+  type="image/webp" fetchpriority="high">
+
+<!-- Favicon & app icons -->
+<link rel="icon" type="image/svg+xml" href="/Logos/roxi-logo-01-vert-rose.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:site_name" content="ROXI">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:url" content="https://client-roxi.vercel.app/">
+<meta property="og:title" content="ROXI — Bar & Restaurant · Châtelain · Bruxelles">
+<meta property="og:description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+<meta property="og:image" content="https://client-roxi.vercel.app/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cocktail signature servi au ROXI, bar-restaurant rue du Bailli, Châtelain">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ROXI — Bar & Restaurant · Châtelain · Bruxelles">
+<meta name="twitter:description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+<meta name="twitter:image" content="https://client-roxi.vercel.app/og-image.jpg">
+<meta name="twitter:image:alt" content="Cocktail signature servi au ROXI, bar-restaurant rue du Bailli, Châtelain">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"></noscript>
+
+<!-- Schema.org : Restaurant + Menu + WebSite (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://client-roxi.vercel.app/#restaurant",
+      "name": "ROXI",
+      "alternateName": "ROXI Bailli",
+      "description": "Bar-restaurant au cœur du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud. Ouvert 7j/7 dès 10h30.",
+      "url": "https://client-roxi.vercel.app/",
+      "logo": "https://client-roxi.vercel.app/Logos/roxi-logo-01-vert-rose.svg",
+      "image": [
+        "https://client-roxi.vercel.app/og-image.jpg",
+        "https://client-roxi.vercel.app/photo-cocktail.webp",
+        "https://client-roxi.vercel.app/photo-plat.webp"
+      ],
+      "telephone": "+3226461792",
+      "email": "theroxi2018@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue du Bailli 82",
+        "addressLocality": "Ixelles",
+        "addressRegion": "Bruxelles-Capitale",
+        "postalCode": "1050",
+        "addressCountry": "BE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.8256251,
+        "longitude": 4.3601542
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:30", "closes": "01:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:30", "closes": "02:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:30", "closes": "01:00"}
+      ],
+      "servesCuisine": ["Belgian", "European", "Mediterranean"],
+      "priceRange": "€€",
+      "acceptsReservations": true,
+      "currenciesAccepted": "EUR",
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Ixelles"},
+        {"@type": "AdministrativeArea", "name": "Bruxelles"},
+        {"@type": "Place", "name": "Quartier du Châtelain"}
+      ],
+      "hasMap": "https://www.google.com/maps?q=Rue+du+Bailli+82,+1050+Ixelles,+Bruxelles",
+      "hasMenu": {"@id": "https://client-roxi.vercel.app/#menu"},
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "tel:+3226461792"
+        }
+      }
+    },
+    {
+      "@type": "Menu",
+      "@id": "https://client-roxi.vercel.app/#menu",
+      "name": "Carte ROXI",
+      "inLanguage": "fr-BE",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Cocktails signature",
+          "description": "Créations maison à base de fruits frais et d'alcools choisis.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Strong Caïpirinha", "description": "Double dose de Rhum Clément 55°, citron vert, sucre de canne", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Ti Punch Passion Frais", "description": "Double dose de Rhum Clément 55°, fruit de la passion frais, sucre de canne", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Ginger Power", "description": "Vodka Eristoff, sirop de gingembre, citron vert, Canada Dry", "offers": {"@type": "Offer", "price": "12.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Atomic Bomb", "description": "Vodka Eristoff, Vodka Limskaya, citron vert, sucre de canne, Schweppes agrumes", "offers": {"@type": "Offer", "price": "12.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Cuisine belge",
+          "description": "Cuisine ouverte non-stop midi à minuit. Carbonnade, tartare, saumon grillé, pizzas maison, burgers 250g.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Burger 100% bœuf 250g", "description": "Cheddar, oignons, iceberg, cornichons, sauce burger, tomates · frites, salade", "offers": {"@type": "Offer", "price": "18.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Saumon frais grillé", "description": "Légumes poêlés, pommes de terre grenaille", "offers": {"@type": "Offer", "price": "24.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Tartare de bœuf", "description": "En kit ou préparé, frites, salade", "offers": {"@type": "Offer", "price": "23.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Carpaccio de bœuf", "description": "Salade roquette, crème balsamique", "offers": {"@type": "Offer", "price": "16.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Pizzas",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "La Roxi", "description": "Jambon de Parme, aubergines & courgettes grillées, roquette, parmesan, olives noires", "offers": {"@type": "Offer", "price": "16.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Margherita", "description": "Mozzarella, tomates", "offers": {"@type": "Offer", "price": "13.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Bières belges",
+          "description": "Au fût et en bouteille — tradition brassicole belge.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Grimbergen Blonde 6,7° (33cl)", "offers": {"@type": "Offer", "price": "4.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Duvel 8,5°", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Chimay Bleue 9°", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}}
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://client-roxi.vercel.app/#website",
+      "url": "https://client-roxi.vercel.app/",
+      "name": "ROXI — Bar & Restaurant · Châtelain · Bruxelles",
+      "inLanguage": "fr-BE",
+      "publisher": {"@id": "https://client-roxi.vercel.app/#restaurant"}
+    }
+  ]
+}
+</script>
+
 <style>
 :root{
   --bg:#1F3329;
@@ -87,9 +264,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:url('photo-cocktail.png') center/cover;
-  filter:brightness(.32) saturate(.95) contrast(1.05);
   z-index:0;
+  overflow:hidden;
+}
+.hero-bg-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:brightness(.32) saturate(.95) contrast(1.05);
 }
 .hero-bg::after{
   content:'';
@@ -137,6 +319,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   width:50px;height:1px;
   background:var(--accent-soft);
   margin:.8rem auto 1.2rem;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:.55rem;
+  margin:.4rem auto 0;
+  padding:.85rem 1.7rem;
+  border:1.5px solid var(--accent);
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:.8rem;font-weight:600;
+  letter-spacing:.14rem;text-transform:uppercase;
+  color:var(--accent);
+  background:rgba(31,51,41,.45);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,color .3s ease,transform .3s ease,border-color .3s ease;
+  text-decoration:none;
+  font-variant-numeric:tabular-nums;
+}
+.hero-cta:hover,.hero-cta:focus-visible{
+  background:var(--accent);
+  color:var(--bg);
+  transform:translateY(-1px);
+  outline:none;
+}
+.hero-cta svg{width:16px;height:16px;flex-shrink:0}
+@media (max-width:600px){
+  .hero-cta{font-size:.74rem;letter-spacing:.1rem;padding:.75rem 1.3rem}
 }
 .hero-nav{
   display:flex;justify-content:center;flex-wrap:wrap;
@@ -523,11 +732,22 @@ section{scroll-margin-top:80px}
   margin-bottom:2rem;letter-spacing:.05rem;
 }
 .footer-contact a:hover{color:var(--accent)}
+.footer-meta{
+  margin-top:2rem;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;
+  font-size:.78rem;font-family:var(--sans);
+  color:var(--text-dim);opacity:.9;
+  letter-spacing:.03em;
+}
+.footer-meta a{transition:color .3s ease}
+.footer-meta a:hover{color:var(--accent)}
+.footer-meta-sep{opacity:.5}
 .footer-legal{
-  margin-top:3rem;font-size:.7rem;
+  margin-top:1.6rem;font-size:.7rem;
   letter-spacing:.25rem;text-transform:uppercase;
   color:var(--text-dim);opacity:.7;
 }
+.footer-legal a:hover{color:var(--accent)}
 
 /* ============== ANIMATIONS ============== */
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
@@ -556,11 +776,20 @@ section{scroll-margin-top:80px}
   .hero{padding:2rem 1rem 2rem}
   .hero-logo{width:180px;height:180px;margin-bottom:1.2rem}
   .hero h1{letter-spacing:.4rem;font-size:clamp(2.4rem,12vw,4rem)}
+  .hero-italic{font-size:.92rem;padding:0 .3rem;text-wrap:balance}
+  .hero-nav{gap:.7rem .9rem;font-size:.62rem;letter-spacing:.16rem}
   .section{padding:4.5rem 1.2rem}
   .menu-card{height:300px;padding:1.5rem}
   .menu-card-title{font-size:1.5rem}
   .footer-brand{letter-spacing:.35rem;font-size:1.8rem}
   .formule-price{font-size:2.2rem}
+}
+@media (max-width:400px){
+  .hero h1{letter-spacing:.28rem}
+  .hero-italic{font-size:.86rem;letter-spacing:0}
+  .hero-nav{gap:.6rem .8rem;font-size:.58rem;letter-spacing:.12rem}
+  .hero-cta{font-size:.7rem;letter-spacing:.08rem;padding:.7rem 1.1rem}
+  .section-title{letter-spacing:.25rem}
 }
 
 /* ============== MODALS ============== */
@@ -759,7 +988,7 @@ body.modal-open{overflow:hidden}
 <!-- ============== STICKY NAV ============== -->
 <nav class="sticky-nav" id="stickyNav" aria-label="Navigation flottante">
   <a href="#top" class="sticky-nav-logo" data-nav aria-label="Retour en haut — ROXI">
-    <img src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI" width="56" height="56">
+    <img src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI — Bar & Restaurant Châtelain" width="56" height="56">
   </a>
   <div class="sticky-nav-links">
     <a href="#about" data-nav>À propos</a>
@@ -772,11 +1001,22 @@ body.modal-open{overflow:hidden}
 
 <!-- ============== HERO ============== -->
 <header class="hero" id="top">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <picture>
+      <source srcset="photo-cocktail-mobile.webp 600w, photo-cocktail.webp 1200w" sizes="100vw" type="image/webp">
+      <img class="hero-bg-img" src="photo-cocktail.png" alt="" width="1200" height="1198" fetchpriority="high" loading="eager" decoding="async">
+    </picture>
+  </div>
   <div class="hero-inner">
-    <img class="hero-logo" src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI Bailli" width="240" height="240">
+    <img class="hero-logo" src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI — Bar & Restaurant rue du Bailli, Châtelain (Ixelles)" width="240" height="240" decoding="async">
     <h1 class="visually-hidden">ROXI — Bar & Restaurant · Châtelain · Bruxelles</h1>
     <p class="hero-italic">Bar · Restaurant · Châtelain · Bruxelles</p>
+
+    <a href="tel:+3226461792" class="hero-cta" aria-label="Appeler ROXI pour réserver au +32 2 646 17 92">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      <span>Réserver — +32 2 646 17 92</span>
+    </a>
+
     <div class="hero-divider"></div>
 
     <nav class="hero-nav" aria-label="Navigation principale">
@@ -811,7 +1051,10 @@ body.modal-open{overflow:hidden}
   <p class="section-italic fade-up">Au cœur du Châtelain, depuis 2018 — un bar-restaurant comme on les aime.</p>
 
   <div class="about-wrap">
-    <img class="about-photo fade-up" src="assets/placeholder-about-gens.jpg" alt="Ambiance et clientèle du ROXI" loading="lazy" decoding="async" width="600" height="520">
+    <picture>
+      <source srcset="assets/placeholder-about-gens.webp" type="image/webp">
+      <img class="about-photo fade-up" src="assets/placeholder-about-gens.jpg" alt="Salle principale et clientèle du ROXI, bar-restaurant rue du Bailli, Châtelain (Ixelles)" loading="lazy" decoding="async" width="600" height="520">
+    </picture>
 
     <div class="fade-up">
       <div class="about-text">
@@ -836,7 +1079,7 @@ body.modal-open{overflow:hidden}
 
   <div class="menu-grid">
     <article class="menu-card fade-up" role="button" tabindex="0" data-menu="cocktails" aria-haspopup="dialog" aria-controls="modal-cocktails">
-      <div class="menu-card-bg" style="background-image:url('photo-cocktail.png')"></div>
+      <div class="menu-card-bg" style="background-image:url('photo-cocktail.webp')"></div>
       <div class="menu-card-content">
         <h3 class="menu-card-title">Cocktails</h3>
         <p class="menu-card-italic">Maison & créations signature</p>
@@ -846,7 +1089,7 @@ body.modal-open{overflow:hidden}
     </article>
 
     <article class="menu-card fade-up" role="button" tabindex="0" data-menu="bieres" aria-haspopup="dialog" aria-controls="modal-bieres">
-      <div class="menu-card-bg" style="background-image:url('assets/placeholder-biere.jpg')"></div>
+      <div class="menu-card-bg" style="background-image:url('assets/placeholder-biere.webp')"></div>
       <div class="menu-card-content">
         <h3 class="menu-card-title">Bières</h3>
         <p class="menu-card-italic">Belges au fût & en bouteille</p>
@@ -856,7 +1099,7 @@ body.modal-open{overflow:hidden}
     </article>
 
     <article class="menu-card fade-up" role="button" tabindex="0" data-menu="vins" aria-haspopup="dialog" aria-controls="modal-vins">
-      <div class="menu-card-bg" style="background-image:url('assets/placeholder-vins.jpg')"></div>
+      <div class="menu-card-bg" style="background-image:url('assets/placeholder-vins.webp')"></div>
       <div class="menu-card-content">
         <h3 class="menu-card-title">Vins & bulles</h3>
         <p class="menu-card-italic">Verre · pichet · bouteille</p>
@@ -866,7 +1109,7 @@ body.modal-open{overflow:hidden}
     </article>
 
     <article class="menu-card fade-up" role="button" tabindex="0" data-menu="food" aria-haspopup="dialog" aria-controls="modal-food">
-      <div class="menu-card-bg" style="background-image:url('photo-plat.png')"></div>
+      <div class="menu-card-bg" style="background-image:url('photo-plat.webp')"></div>
       <div class="menu-card-content">
         <h3 class="menu-card-title">Cuisine belge</h3>
         <p class="menu-card-italic">Du finger food au plat signature</p>
@@ -876,7 +1119,7 @@ body.modal-open{overflow:hidden}
     </article>
 
     <article class="menu-card menu-card-wide fade-up" role="button" tabindex="0" data-menu="cafe" aria-haspopup="dialog" aria-controls="modal-cafe">
-      <div class="menu-card-bg" style="background-image:url('assets/placeholder-cafe.jpg')"></div>
+      <div class="menu-card-bg" style="background-image:url('assets/placeholder-cafe.webp')"></div>
       <div class="menu-card-content">
         <h3 class="menu-card-title">Café & boissons chaudes</h3>
         <p class="menu-card-italic">Pour les après-midis posés</p>
@@ -965,11 +1208,15 @@ body.modal-open{overflow:hidden}
   <p class="section-italic fade-up">Au cœur du quartier du Châtelain, à deux pas de la Place du même nom.</p>
 
   <div class="map-wrap fade-up">
+    <!-- TODO: remplacer par l'URL embed avec place_id réel de la fiche GBP ROXI
+         (format : https://www.google.com/maps/embed?pb=!1m18!...!2sROXI...)
+         pour pointer directement sur la fiche avec ses avis Google,
+         au lieu d'une simple recherche par adresse -->
     <iframe
       src="https://www.google.com/maps?q=Rue+du+Bailli+82,+1050+Ixelles,+Bruxelles&output=embed"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="Carte — Rue du Bailli 82, 1050 Ixelles, Bruxelles"></iframe>
+      title="Carte — ROXI Bar & Restaurant, Rue du Bailli 82, 1050 Ixelles, Bruxelles"></iframe>
   </div>
 
   <div class="access-info">
@@ -990,7 +1237,7 @@ body.modal-open{overflow:hidden}
 
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
-  <img class="footer-logo" src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI" width="96" height="96">
+  <img class="footer-logo" src="Logos/roxi-logo-01-vert-rose.svg" alt="Logo ROXI — Bar & Restaurant Châtelain · Ixelles" width="96" height="96" loading="lazy" decoding="async">
   <p class="footer-tag">Bar · Restaurant · Châtelain · depuis 2018</p>
 
   <div class="footer-divider"></div>
@@ -1001,21 +1248,31 @@ body.modal-open{overflow:hidden}
   </p>
 
   <div class="social-row">
-    <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener">
+    <!-- TODO: remplacer par la vraie URL Instagram ROXI quand connue (et ajouter au sameAs du schema) -->
+    <a href="https://www.instagram.com/" aria-label="Instagram ROXI" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
     </a>
-    <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener">
+    <!-- TODO: remplacer par la vraie URL Facebook ROXI quand connue (et ajouter au sameAs du schema) -->
+    <a href="https://www.facebook.com/" aria-label="Facebook ROXI" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.9v3h2.6V21h3z"/></svg>
     </a>
-    <a href="mailto:theroxi2018@gmail.com" aria-label="Email">
+    <a href="mailto:theroxi2018@gmail.com" aria-label="Email ROXI">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
     </a>
-    <a href="tel:+3226461792" aria-label="Téléphone">
+    <a href="tel:+3226461792" aria-label="Téléphone ROXI">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
     </a>
   </div>
 
-  <p class="footer-legal">© 2026 ROXI · Rue du Bailli 82, Ixelles · Tous droits réservés</p>
+  <nav class="footer-meta" aria-label="Liens légaux">
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <span class="footer-meta-sep" aria-hidden="true">·</span>
+    <a href="/politique-confidentialite.html">Politique de confidentialité</a>
+    <span class="footer-meta-sep" aria-hidden="true">·</span>
+    <span>Carte mise à jour le 19 mai 2026</span>
+  </nav>
+
+  <p class="footer-legal">© 2026 ROXI · Rue du Bailli 82, Ixelles · Tous droits réservés · Site conçu par <a href="mailto:elie.blecher@gmail.com">Elie</a></p>
 </footer>
 
 <!-- ============== MODAL — COCKTAILS ============== -->

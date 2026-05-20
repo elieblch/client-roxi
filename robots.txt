@@ -1,0 +1,19 @@
+# robots.txt — ROXI Bar & Restaurant
+# Châtelain, Ixelles · Bruxelles
+#
+# ÉTAT PROVISOIRE : DISALLOW TOTAL pendant la phase preview Vercel.
+# Le site est servi sur https://client-roxi.vercel.app/ uniquement pour
+# validation interne par le propriétaire pendant ~2 semaines.
+#
+# Le jour de la bascule sur le domaine custom (ex : roxi.be), remplacer
+# le contenu de ce fichier par la version production documentée dans les
+# notes projet (section 6).
+#
+# Last updated: 2026-05-20
+
+User-agent: *
+Disallow: /
+
+# Sitemap reste référencé : non crawlé tant que Disallow: / est actif,
+# mais prêt pour le jour de la bascule.
+Sitemap: https://client-roxi.vercel.app/sitemap.xml
