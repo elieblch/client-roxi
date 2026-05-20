@@ -1,3 +1,4 @@
 # Fichiers internes de dev — pas servis en production
 CLAUDE.md
+MIGRATION-DOMAINE.md
 .DS_Store
