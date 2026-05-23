@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  @canonical-domain: https://client-roxi.vercel.app
+  → URL provisoire (preview Vercel). Le jour où un domaine custom est
+    branché (ex: https://www.roxi.be), mettre à jour TOUTES les
+    occurrences via la commande suivante :
+
+    grep -rln "client-roxi.vercel.app" Roxi/ | xargs sed -i '' \
+      's|https://client-roxi.vercel.app|https://NOUVEAU-DOMAINE|g'
+
+    Endroits concernés (cf. notes projet section "Domaine canonique") :
+    - <link rel="canonical">      (head)
+    - og:url                      (Open Graph)
+    - JSON-LD : @id, url, logo, image (5 occurrences dans @graph)
+    - sitemap.xml                 (à créer bloc 3)
+    - robots.txt                  (Sitemap: line, bloc 3)
+  =====================================================================
+-->
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1F3329">
+<title>ROXI · Bar & Restaurant · Châtelain · Bruxelles</title>
+<meta name="description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+
+<!-- PROVISOIRE preview Vercel : noindex pour éviter d'indexer la preview Vercel.
+     🔴 À RETIRER le jour de la bascule sur le domaine custom (voir notes projet section 6). -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://client-roxi.vercel.app/">
+
+<!-- Preload LCP : hero image (critical perf, responsive) -->
+<link rel="preload" as="image"
+  imagesrcset="/photo-fond-mobile.webp 600w, /photo-fond.webp 1200w"
+  imagesizes="100vw"
+  type="image/webp" fetchpriority="high">
+
+<!-- Favicon & app icons -->
+<link rel="icon" type="image/svg+xml" href="/Logos/roxi-logo-01-vert-rose.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:site_name" content="ROXI">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:url" content="https://client-roxi.vercel.app/">
+<meta property="og:title" content="ROXI · Bar & Restaurant · Châtelain · Bruxelles">
+<meta property="og:description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+<meta property="og:image" content="https://client-roxi.vercel.app/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cocktail signature servi au ROXI, bar-restaurant rue du Bailli, Châtelain">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ROXI · Bar & Restaurant · Châtelain · Bruxelles">
+<meta name="twitter:description" content="Bar-restaurant ROXI, rue du Bailli, Châtelain (Ixelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
+<meta name="twitter:image" content="https://client-roxi.vercel.app/og-image.jpg">
+<meta name="twitter:image:alt" content="Cocktail signature servi au ROXI, bar-restaurant rue du Bailli, Châtelain">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet"></noscript>
+
+<!-- Schema.org : Restaurant + Menu + WebSite (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://client-roxi.vercel.app/#restaurant",
+      "name": "ROXI",
+      "alternateName": "ROXI Bailli",
+      "description": "Bar-restaurant au cœur du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud. Ouvert 7j/7 dès 10h30.",
+      "url": "https://client-roxi.vercel.app/",
+      "logo": "https://client-roxi.vercel.app/Logos/roxi-logo-01-vert-rose.svg",
+      "image": [
+        "https://client-roxi.vercel.app/og-image.jpg",
+        "https://client-roxi.vercel.app/photo-cocktail.webp",
+        "https://client-roxi.vercel.app/photo-plat.webp"
+      ],
+      "telephone": "+3226461792",
+      "email": "theroxi2018@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue du Bailli 82",
+        "addressLocality": "Ixelles",
+        "addressRegion": "Bruxelles-Capitale",
+        "postalCode": "1050",
+        "addressCountry": "BE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.8256251,
+        "longitude": 4.3601542
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:30", "closes": "01:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:30", "closes": "02:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:30", "closes": "01:00"}
+      ],
+      "servesCuisine": ["Belgian", "European", "Mediterranean"],
+      "priceRange": "€€",
+      "acceptsReservations": true,
+      "currenciesAccepted": "EUR",
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Ixelles"},
+        {"@type": "AdministrativeArea", "name": "Bruxelles"},
+        {"@type": "Place", "name": "Quartier du Châtelain"}
+      ],
+      "hasMap": "https://www.google.com/maps?q=Rue+du+Bailli+82,+1050+Ixelles,+Bruxelles",
+      "hasMenu": {"@id": "https://client-roxi.vercel.app/#menu"},
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "tel:+3226461792"
+        }
+      }
+    },
+    {
+      "@type": "Menu",
+      "@id": "https://client-roxi.vercel.app/#menu",
+      "name": "Carte ROXI",
+      "inLanguage": "fr-BE",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Cocktails signature",
+          "description": "Créations maison à base de fruits frais et d'alcools choisis.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Strong Caïpirinha", "description": "Double dose de Rhum Clément 55°, citron vert, sucre de canne", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Ti Punch Passion Frais", "description": "Double dose de Rhum Clément 55°, fruit de la passion frais, sucre de canne", "offers": {"@type": "Offer", "price": "14.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Ginger Power", "description": "Vodka Eristoff, sirop de gingembre, citron vert, Canada Dry", "offers": {"@type": "Offer", "price": "12.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Atomic Bomb", "description": "Vodka Eristoff, Vodka Limskaya, citron vert, sucre de canne, Schweppes agrumes", "offers": {"@type": "Offer", "price": "12.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Cuisine belge",
+          "description": "Cuisine de passion, ouverte de 11h à 15h et de 17h à 22h. Steak, tartare, saumon grillé, pizzas maison, burgers 250g.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Burger 100% bœuf 250g", "description": "Cheddar, oignons, iceberg, cornichons, sauce burger, tomates · frites, salade", "offers": {"@type": "Offer", "price": "18.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Saumon frais grillé", "description": "Légumes poêlés, pommes de terre grenaille", "offers": {"@type": "Offer", "price": "24.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Tartare de bœuf", "description": "En kit ou préparé, frites, salade", "offers": {"@type": "Offer", "price": "23.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Carpaccio de bœuf", "description": "Salade roquette, crème balsamique", "offers": {"@type": "Offer", "price": "16.50", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Pizzas",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "La Roxi", "description": "Jambon de Parme, aubergines & courgettes grillées, roquette, parmesan, olives noires", "offers": {"@type": "Offer", "price": "16.50", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Margherita", "description": "Mozzarella, tomates", "offers": {"@type": "Offer", "price": "13.00", "priceCurrency": "EUR"}}
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Bières belges",
+          "description": "Au fût et en bouteille, tradition brassicole belge.",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Grimbergen Blonde 6,7° (33cl)", "offers": {"@type": "Offer", "price": "4.00", "priceCurrency": "EUR"}},
+            {"@type": "MenuItem", "name": "Duvel 8,5°", "offers": {"@type": "Offer", "price": "5.50", "priceCurrency": "EUR"}}
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://client-roxi.vercel.app/#website",
+      "url": "https://client-roxi.vercel.app/",
+      "name": "ROXI · Bar & Restaurant · Châtelain · Bruxelles",
+      "inLanguage": "fr-BE",
+      "publisher": {"@id": "https://client-roxi.vercel.app/#restaurant"}
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#1F3329;
+  --surface:#2A4035;
+  --text:#E8A0B8;
+  --text-dim:#F5E9D7;
+  --accent:#D9A441;
+  --accent-soft:#E8A0B8;
+  --line:rgba(232,160,184,.22);
+  --line-strong:rgba(232,160,184,.4);
+  --display:'Baloo 2', system-ui, sans-serif;
+  --serif:'Baloo 2', system-ui, sans-serif;
+  --sans:'Nunito', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-tap-highlight-color:transparent;color-scheme:dark}
+html.smooth{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;transition:color .3s ease,opacity .3s ease}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;touch-action:manipulation}
+::selection{background:var(--accent);color:var(--bg)}
+
+/* ============== STICKY NAV ============== */
+.sticky-nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;
+  background:rgba(31,51,41,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  transform:translateY(-110%);
+  transition:transform .4s ease;
+}
+.sticky-nav.visible{transform:translateY(0)}
+.sticky-nav-logo{
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--serif);
+  font-size:1.2rem;letter-spacing:.3rem;text-transform:uppercase;
+  color:var(--accent);font-weight:700;
+}
+.sticky-nav-logo img{
+  width:56px;height:56px;
+  object-fit:contain;
+}
+.sticky-nav-links{
+  display:flex;gap:1.6rem;
+  font-size:.72rem;letter-spacing:.25rem;text-transform:uppercase;
+}
+.sticky-nav-links a{position:relative;padding:.3rem 0}
+.sticky-nav-links a:hover{color:var(--accent)}
+.sticky-nav-links a.active{color:var(--accent)}
+.sticky-nav-links a.active::after{
+  content:'';position:absolute;left:0;right:0;bottom:-2px;
+  height:1px;background:var(--accent);
+}
+
+/* ============== HERO ============== */
+.hero{
+  position:relative;
+  padding:3rem 1.5rem 2.5rem;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  z-index:0;
+  overflow:hidden;
+}
+.hero-bg-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:brightness(.32) saturate(.95) contrast(1.05);
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(31,51,41,.55) 0%,rgba(31,51,41,.4) 50%,rgba(31,51,41,.95) 100%);
+}
+.hero-inner{position:relative;z-index:1;width:100%;max-width:900px}
+
+.hero-logo{
+  width:240px;height:240px;
+  margin:0 auto 1.8rem;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 16px rgba(0,0,0,.35));
+}
+.visually-hidden{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(3rem,9vw,6rem);
+  font-weight:800;
+  letter-spacing:.55rem;
+  text-transform:uppercase;
+  line-height:1;
+  margin-bottom:.6rem;
+  text-wrap:balance;
+  color:var(--accent);
+}
+.hero-italic{
+  font-family:var(--sans);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1rem,1.8vw,1.25rem);
+  color:var(--accent-soft);
+  margin-bottom:1.2rem;
+  letter-spacing:.05rem;
+}
+.hero-divider{
+  width:50px;height:1px;
+  background:var(--accent-soft);
+  margin:.8rem auto 1.2rem;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:.55rem;
+  margin:.4rem auto 0;
+  padding:.85rem 1.7rem;
+  border:1.5px solid var(--accent);
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:.8rem;font-weight:600;
+  letter-spacing:.14rem;text-transform:uppercase;
+  color:var(--accent);
+  background:rgba(31,51,41,.45);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:background .3s ease,color .3s ease,transform .3s ease,border-color .3s ease;
+  text-decoration:none;
+  font-variant-numeric:tabular-nums;
+}
+.hero-cta:hover,.hero-cta:focus-visible{
+  background:var(--accent);
+  color:var(--bg);
+  transform:translateY(-1px);
+  outline:none;
+}
+.hero-cta svg{width:16px;height:16px;flex-shrink:0}
+@media (max-width:600px){
+  .hero-cta{font-size:.74rem;letter-spacing:.1rem;padding:.75rem 1.3rem}
+}
+.hero-nav{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:1.6rem;
+  font-size:.74rem;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  margin-bottom:1.4rem;
+}
+.hero-nav a{position:relative;padding:.3rem 0}
+.hero-nav a:hover{color:var(--accent)}
+.hero-nav a::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:50%;
+  width:0;height:1px;
+  background:var(--accent);
+  transition:width .3s ease,left .3s ease;
+}
+.hero-nav a:hover::after{width:100%;left:0}
+
+.social-row{
+  display:flex;justify-content:center;
+  gap:1rem;
+}
+.social-row a{
+  width:36px;height:36px;
+  border:1px solid var(--accent-soft);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--accent-soft);
+}
+.social-row a:hover{border-color:var(--accent);color:var(--accent);background:rgba(217,164,65,.1)}
+.social-row svg{width:15px;height:15px}
+
+/* ============== SECTIONS ============== */
+section{scroll-margin-top:80px}
+.section{
+  max-width:1200px;
+  margin:0 auto;
+  padding:6rem 1.5rem;
+  text-align:center;
+}
+.section + .section{border-top:1px solid var(--line)}
+
+.kicker{
+  font-family:var(--sans);
+  font-size:.78rem;
+  letter-spacing:.4rem;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1rem;
+  font-weight:600;
+}
+.section-title{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  font-weight:700;
+  letter-spacing:.4rem;
+  text-transform:uppercase;
+  margin-bottom:.4rem;
+  text-wrap:balance;
+  display:inline-block;
+  position:relative;
+  color:var(--accent);
+}
+.section-title::after{
+  content:'';
+  display:block;
+  width:100%;
+  height:8px;
+  margin-top:.6rem;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'><path d='M0,4 Q12.5,0 25,4 T50,4 T75,4 T100,4' stroke='%23E8A0B8' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+}
+.section-italic{
+  font-family:var(--sans);
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(1.1rem,2vw,1.35rem);
+  color:var(--text-dim);
+  margin:1.8rem auto 3rem;
+  max-width:680px;
+  text-wrap:balance;
+}
+
+/* ============== ABOUT ============== */
+.about-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  text-align:left;
+  margin-top:1rem;
+}
+.about-photo{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  border:1px solid var(--line);
+  filter:brightness(.94) contrast(1.05);
+}
+.about-text{
+  font-size:1.05rem;
+  line-height:1.9;
+  color:var(--text-dim);
+}
+.about-text p + p{margin-top:1.2rem}
+.about-quote{
+  font-family:var(--sans);
+  font-style:italic;
+  font-weight:500;
+  font-size:1.45rem;
+  color:var(--accent);
+  margin-top:2rem;
+  padding-top:2rem;
+  border-top:1px solid var(--line-strong);
+  line-height:1.5;
+  text-wrap:balance;
+}
+.rating{
+  margin-top:2rem;
+  display:flex;align-items:center;gap:1rem;
+  font-size:.85rem;
+  letter-spacing:.15rem;
+  text-transform:uppercase;
+  color:var(--text-dim);
+}
+.rating-stars{color:var(--accent);letter-spacing:.1rem;font-size:1rem}
+
+/* ============== MENU ============== */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;
+  margin-top:1rem;
+  text-align:left;
+}
+.menu-card{
+  position:relative;
+  height:340px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:2rem;
+}
+.menu-card-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:transform 1s ease;
+}
+.menu-card:hover .menu-card-bg{transform:scale(1.06)}
+.menu-card::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(31,51,41,.2) 0%,rgba(31,51,41,.55) 60%,rgba(31,51,41,.95) 100%);
+  z-index:1;
+}
+.menu-card-content{position:relative;z-index:2;width:100%}
+.menu-card-title{
+  font-family:var(--serif);
+  font-size:1.9rem;
+  font-weight:700;
+  letter-spacing:.2rem;
+  text-transform:uppercase;
+  margin-bottom:.3rem;
+  color:var(--accent);
+}
+.menu-card-italic{
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--accent-soft);
+  font-size:1.02rem;
+  margin-bottom:.6rem;
+  font-weight:400;
+}
+.menu-card-desc{
+  font-size:.92rem;
+  color:var(--text-dim);
+  line-height:1.6;
+  margin-bottom:1rem;
+}
+.menu-card-price{
+  font-size:.78rem;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  color:var(--text);
+  border-top:1px solid var(--line-strong);
+  padding-top:.8rem;
+  font-variant-numeric:tabular-nums;
+}
+.menu-card-wide{grid-column:span 2;height:280px}
+
+.menu-card[data-menu]{cursor:pointer}
+.menu-card[data-menu]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.menu-card[data-menu]::before{
+  content:'Voir la carte →';
+  position:absolute;
+  top:1rem;right:1rem;
+  z-index:3;
+  font-size:.65rem;
+  letter-spacing:.18rem;
+  text-transform:uppercase;
+  font-family:var(--sans);
+  font-weight:600;
+  color:var(--accent);
+  padding:.45rem .75rem;
+  border:1px solid rgba(217,164,65,.55);
+  background:rgba(15,30,22,.7);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  transition:background .3s ease,color .3s ease,border-color .3s ease;
+}
+.menu-card[data-menu]:hover::before,
+.menu-card[data-menu]:focus-visible::before{
+  background:var(--accent);
+  color:var(--bg);
+  border-color:var(--accent);
+}
+
+/* ============== GROUPE ============== */
+.formules-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  margin-top:1rem;
+  text-align:center;
+}
+.formule{
+  padding:2.4rem 1.5rem;
+  border:1px solid var(--line-strong);
+  background:rgba(232,160,184,.04);
+  transition:background .3s ease,border-color .3s ease;
+}
+.formule:hover{background:rgba(232,160,184,.08);border-color:var(--accent)}
+.formule-price{
+  font-family:var(--serif);
+  font-size:2.6rem;
+  font-weight:800;
+  color:var(--accent);
+  margin-bottom:.4rem;
+}
+.formule-label{
+  font-family:var(--sans);
+  font-size:.78rem;
+  letter-spacing:.25rem;
+  text-transform:uppercase;
+  color:var(--text-dim);
+}
+
+.groupe-detail{
+  margin-top:3rem;
+  text-align:left;
+  max-width:780px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.groupe-detail h4{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:.25rem;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.6rem;
+  margin-top:1.6rem;
+}
+.groupe-detail h4:first-child{margin-top:0}
+.groupe-detail p{color:var(--text-dim);font-size:.98rem;line-height:1.7}
+.groupe-note{
+  margin-top:2.4rem;
+  padding:1.2rem 1.5rem;
+  border-left:2px solid var(--accent);
+  background:rgba(217,164,65,.06);
+  font-style:italic;
+  color:var(--text-dim);
+  font-size:.9rem;
+  line-height:1.7;
+}
+
+/* ============== CONTACT ============== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:3rem;
+  max-width:900px;
+  margin:1rem auto 0;
+  text-align:left;
+}
+.contact-divider{background:var(--line-strong)}
+.contact-block h3{
+  font-family:var(--serif);
+  font-size:1.3rem;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:1.5rem;
+  color:var(--accent);
+}
+.contact-block p{font-size:1rem;color:var(--text);margin-bottom:.4rem}
+.contact-block a:hover{color:var(--accent)}
+.contact-note{
+  margin-top:1.5rem;
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--text-dim);
+  font-size:.92rem;
+}
+
+.hours-list{list-style:none;font-variant-numeric:tabular-nums}
+.hours-list li{
+  display:flex;justify-content:space-between;
+  padding:.7rem 0;
+  border-bottom:1px dotted var(--line);
+  font-size:.95rem;
+}
+.hours-day{
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--text-dim);
+  font-size:1.05rem;
+  font-weight:400;
+}
+.hours-time{color:var(--text);letter-spacing:.05rem}
+.hours-closed{color:var(--accent);font-style:italic}
+
+/* ============== MAP / FIND ============== */
+.map-wrap{
+  margin-top:1rem;
+  border:1px solid var(--line-strong);
+  overflow:hidden;
+}
+.map-wrap iframe{
+  width:100%;height:480px;border:0;
+  filter:invert(.9) hue-rotate(180deg) saturate(.8) brightness(.95);
+}
+.access-info{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:2.5rem;text-align:center;
+}
+.access-item{padding:1.5rem;border:1px solid var(--line-strong)}
+.access-item-label{
+  font-family:var(--sans);
+  font-size:.72rem;letter-spacing:.3rem;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;font-weight:600;
+}
+.access-item-value{
+  font-family:var(--sans);font-style:italic;font-size:1.05rem;color:var(--text);font-weight:400;
+}
+
+/* ============== FOOTER ============== */
+.footer{
+  border-top:1px solid var(--accent-soft);
+  background:#152721;
+  padding:5rem 1.5rem 3rem;
+  text-align:center;
+}
+.footer-logo{
+  width:96px;height:96px;
+  margin:0 auto 1.4rem;
+  object-fit:contain;
+}
+.footer-brand{
+  font-family:var(--serif);
+  font-size:2.2rem;font-weight:800;
+  letter-spacing:.5rem;text-transform:uppercase;
+  margin-bottom:.4rem;
+  color:var(--accent);
+}
+.footer-tag{
+  font-family:var(--sans);font-style:italic;font-weight:400;
+  color:var(--text-dim);
+  margin-bottom:1.5rem;font-size:1.05rem;
+}
+.footer-divider{width:50px;height:1px;background:var(--accent-soft);opacity:.4;margin:2rem auto}
+.footer-address{
+  font-family:var(--sans);font-style:italic;font-weight:400;
+  font-size:1.1rem;color:var(--text);line-height:1.7;margin-bottom:.5rem;
+}
+.footer-contact{
+  font-size:.9rem;color:var(--text-dim);
+  margin-bottom:2rem;letter-spacing:.05rem;
+}
+.footer-contact a:hover{color:var(--accent)}
+.footer-meta{
+  margin-top:2rem;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;
+  font-size:.78rem;font-family:var(--sans);
+  color:var(--text-dim);opacity:.9;
+  letter-spacing:.03em;
+}
+.footer-meta a{transition:color .3s ease}
+.footer-meta a:hover{color:var(--accent)}
+.footer-meta-sep{opacity:.5}
+.footer-legal{
+  margin-top:1.6rem;font-size:.7rem;
+  letter-spacing:.25rem;text-transform:uppercase;
+  color:var(--text-dim);opacity:.7;
+}
+.footer-legal a:hover{color:var(--accent)}
+
+/* ============== ANIMATIONS ============== */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+.fade-up.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .fade-up{opacity:1;transform:none;transition:none}
+  *{animation:none!important;transition:none!important}
+}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width:900px){
+  .menu-grid{grid-template-columns:1fr}
+  .menu-card-wide{grid-column:span 1}
+  .about-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .about-photo{height:340px}
+  .contact-grid{grid-template-columns:1fr;gap:2rem}
+  .contact-divider{height:1px;width:60px;margin:0 auto}
+  .access-info{grid-template-columns:1fr}
+  .formules-grid{grid-template-columns:1fr;gap:1rem}
+  .sticky-nav-links{gap:1rem;font-size:.65rem;letter-spacing:.18rem}
+  .hero-nav{gap:1.2rem;font-size:.66rem;letter-spacing:.22rem}
+}
+@media (max-width:600px){
+  .sticky-nav{padding:.6rem 1rem}
+  .sticky-nav-logo span{display:none}
+  .hero{padding:2rem 1rem 2rem}
+  .hero-logo{width:180px;height:180px;margin-bottom:1.2rem}
+  .hero h1{letter-spacing:.4rem;font-size:clamp(2.4rem,12vw,4rem)}
+  .hero-italic{font-size:.92rem;padding:0 .3rem;text-wrap:balance}
+  .hero-nav{gap:.7rem .9rem;font-size:.62rem;letter-spacing:.16rem}
+  .section{padding:4.5rem 1.2rem}
+  .menu-card{height:300px;padding:1.5rem}
+  .menu-card-title{font-size:1.5rem}
+  .footer-brand{letter-spacing:.35rem;font-size:1.8rem}
+  .formule-price{font-size:2.2rem}
+}
+@media (max-width:400px){
+  .hero h1{letter-spacing:.28rem}
+  .hero-italic{font-size:.86rem;letter-spacing:0}
+  .hero-nav{gap:.6rem .8rem;font-size:.58rem;letter-spacing:.12rem}
+  .hero-cta{font-size:.7rem;letter-spacing:.08rem;padding:.7rem 1.1rem}
+  .section-title{letter-spacing:.25rem}
+}
+
+/* ============== MODALS ============== */
+.modal{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  padding:2rem 1rem;
+  opacity:0;visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+.modal.open{opacity:1;visibility:visible}
+.modal-backdrop{
+  position:absolute;inset:0;
+  background:rgba(15,30,22,.92);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  cursor:pointer;
+}
+.modal-panel{
+  position:relative;
+  background:var(--bg);
+  border:1px solid var(--line-strong);
+  width:100%;max-width:760px;max-height:90vh;
+  display:flex;flex-direction:column;
+  transform:translateY(20px);
+  transition:transform .4s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.modal.open .modal-panel{transform:none}
+.modal-close{
+  position:absolute;top:.9rem;right:.9rem;z-index:5;
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--accent-soft);
+  color:var(--accent-soft);
+  background:rgba(15,30,22,.6);
+  font-size:1.6rem;line-height:1;
+  font-family:var(--sans);font-weight:300;
+  transition:color .3s ease,border-color .3s ease,background .3s ease,transform .3s ease;
+}
+.modal-close:hover{
+  color:var(--accent);border-color:var(--accent);
+  background:rgba(217,164,65,.15);transform:rotate(90deg);
+}
+.modal-content{
+  overflow-y:auto;
+  padding:3rem 2.5rem 2.5rem;
+  scrollbar-width:thin;
+  scrollbar-color:var(--accent-soft) transparent;
+}
+.modal-content::-webkit-scrollbar{width:6px}
+.modal-content::-webkit-scrollbar-thumb{background:var(--accent-soft);border-radius:3px}
+.modal-content::-webkit-scrollbar-track{background:transparent}
+
+.modal-title{
+  font-family:var(--display);
+  font-size:clamp(1.9rem,4.5vw,2.8rem);
+  font-weight:800;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  color:var(--accent);
+  text-align:center;
+  margin-bottom:.5rem;
+  text-wrap:balance;
+}
+.modal-italic{
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--accent-soft);
+  text-align:center;
+  font-size:.98rem;
+  margin:0 auto 2.5rem;
+  max-width:560px;
+  line-height:1.55;
+}
+
+.modal-section{margin-top:2.5rem}
+.modal-section:first-of-type{margin-top:0}
+.modal-section-title{
+  font-family:var(--display);
+  font-weight:700;
+  color:var(--accent);
+  font-size:1.15rem;
+  letter-spacing:.3rem;
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:1.4rem;
+  padding-bottom:.7rem;
+  border-bottom:1px solid var(--line-strong);
+}
+.modal-section-note{
+  text-align:center;
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--text-dim);
+  font-size:.85rem;
+  margin-top:-.8rem;
+  margin-bottom:1.4rem;
+}
+
+.modal-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:start;
+  gap:1.5rem;
+  padding:.95rem 0;
+  border-bottom:1px dashed rgba(232,160,184,.25);
+}
+.modal-row:last-child{border-bottom:none}
+
+.item-name{
+  display:block;
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--text);
+  letter-spacing:.04rem;
+}
+.item-name .badge{
+  display:inline-block;
+  margin-left:.5rem;
+  font-family:var(--sans);
+  font-size:.62rem;
+  letter-spacing:.18rem;
+  text-transform:uppercase;
+  font-weight:700;
+  color:var(--bg);
+  background:var(--accent);
+  padding:.18rem .55rem;
+  border-radius:50px;
+  vertical-align:middle;
+}
+.item-desc{
+  display:block;
+  font-family:var(--sans);
+  font-style:italic;
+  color:var(--text-dim);
+  font-size:.88rem;
+  margin-top:.25rem;
+  line-height:1.5;
+}
+.item-price{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.02rem;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+
+.modal-priced-header{
+  display:grid;
+  grid-template-columns:1fr 70px 70px 80px;
+  gap:1rem;
+  padding-bottom:.7rem;
+  margin-bottom:.4rem;
+  border-bottom:1px solid var(--line-strong);
+  font-family:var(--sans);
+  font-size:.66rem;
+  letter-spacing:.2rem;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+}
+.modal-priced-header span{text-align:right}
+.modal-priced-row{
+  display:grid;
+  grid-template-columns:1fr 70px 70px 80px;
+  gap:1rem;
+  align-items:start;
+  padding:.95rem 0;
+  border-bottom:1px dashed rgba(232,160,184,.25);
+}
+.modal-priced-row:last-child{border-bottom:none}
+.modal-priced-row .item-price{text-align:right}
+
+body.modal-open{overflow:hidden}
+
+@media (max-width:600px){
+  .modal{padding:1rem .6rem}
+  .modal-content{padding:2.5rem 1.4rem 2rem}
+  .modal-title{letter-spacing:.18rem}
+  .modal-priced-header,
+  .modal-priced-row{grid-template-columns:1fr 50px 50px 58px;gap:.5rem}
+  .modal-priced-header{font-size:.58rem;letter-spacing:.14rem}
+  .item-name{font-size:.95rem}
+  .item-desc{font-size:.82rem}
+  .item-price{font-size:.92rem}
+  .menu-card[data-menu]::before{font-size:.6rem;padding:.35rem .6rem;letter-spacing:.14rem}
+}
+
+/* ============== PAGES ISOLÉES (navigation cloisonnée) ============== */
+[hidden]{display:none!important}
+.view{animation:viewIn .45s ease}
+@keyframes viewIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}}
+
+/* ============== BOUTON PILULE RÉUTILISABLE ============== */
+.btn-pill{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.85rem 1.7rem;
+  border:1.5px solid var(--accent);border-radius:50px;
+  font-family:var(--sans);font-size:.8rem;font-weight:600;
+  letter-spacing:.14rem;text-transform:uppercase;
+  color:var(--accent);background:rgba(31,51,41,.45);
+  transition:background .3s ease,color .3s ease,transform .3s ease,border-color .3s ease;
+  cursor:pointer;font-variant-numeric:tabular-nums;
+}
+.btn-pill:hover,.btn-pill:focus-visible{background:var(--accent);color:var(--bg);transform:translateY(-1px);outline:none}
+.btn-pill svg{width:16px;height:16px;flex-shrink:0}
+.btn-center{display:flex;justify-content:center;margin-top:2.6rem}
+
+/* ============== SÉLECTEUR DE LANGUE FR / EN ============== */
+.lang-toggle{
+  display:inline-flex;align-items:center;
+  border:1px solid var(--line-strong);border-radius:50px;
+  overflow:hidden;margin:0 auto 2.2rem;
+  font-family:var(--sans);font-size:.72rem;font-weight:700;
+  letter-spacing:.18rem;text-transform:uppercase;
+}
+.lang-toggle button{padding:.5rem 1.1rem;color:var(--text-dim);background:transparent;transition:background .3s ease,color .3s ease}
+.lang-toggle button.active{background:var(--accent);color:var(--bg)}
+.lang-toggle button:not(.active):hover{color:var(--accent)}
+
+/* ============== LOGOS SOCIAUX · VERSION COULEUR ============== */
+/* Couleurs officielles de marque. (En version mono, ce bloc est retiré : tout reste rose poudré.) */
+.social-row a.social-ig{
+  color:#fff;border-color:transparent;
+  background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.social-row a.social-fb{color:#fff;border-color:transparent;background:#1877F2}
+.social-row a.social-ta{color:#000;border-color:transparent;background:#34E0A1}
+.social-row a.social-ig:hover,
+.social-row a.social-fb:hover,
+.social-row a.social-ta:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.waze-btn{color:#fff;border-color:#33CCFF;background:#33CCFF}
+.waze-btn:hover,.waze-btn:focus-visible{background:#16b8ef;border-color:#16b8ef;color:#fff;transform:translateY(-1px)}
+.waze-btn svg{width:18px;height:18px}
+
+/* ============== AVIS ============== */
+.avis-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:1rem;text-align:left;
+}
+.avis-card{
+  display:flex;flex-direction:column;
+  padding:2rem 1.7rem;
+  border:1px solid var(--line-strong);
+  background:rgba(232,160,184,.04);
+}
+.avis-stars{color:var(--accent);letter-spacing:.1rem;font-size:1.05rem;margin-bottom:.9rem}
+.avis-text{font-family:var(--sans);font-style:italic;color:var(--text-dim);font-size:1rem;line-height:1.65;flex:1}
+.avis-meta{
+  margin-top:1.3rem;padding-top:1rem;border-top:1px solid var(--line);
+  font-size:.72rem;letter-spacing:.18rem;text-transform:uppercase;color:var(--text);
+}
+.avis-meta span{display:block;font-style:normal;color:var(--accent);margin-bottom:.2rem}
+.avis-dish{font-family:var(--sans);font-style:italic;text-transform:none;letter-spacing:0;color:var(--text-dim);font-size:.8rem}
+@media (max-width:900px){.avis-grid{grid-template-columns:1fr}}
+
+/* ============== FORMULAIRE DE RÉSERVATION ============== */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem 1.4rem;text-align:left;margin-top:.5rem}
+.form-field{display:flex;flex-direction:column}
+.form-field.full{grid-column:span 2}
+.form-field label{
+  font-family:var(--sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.18rem;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.5rem;
+}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;padding:.7rem .85rem;
+  background:rgba(232,160,184,.05);
+  border:1px solid var(--line-strong);border-radius:6px;
+  color:var(--text-dim);font-family:var(--sans);font-size:.95rem;
+  transition:border-color .3s ease,background .3s ease;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  outline:none;border-color:var(--accent);background:rgba(232,160,184,.09);
+}
+.form-field textarea{resize:vertical;min-height:80px}
+.form-field select option{background:var(--bg);color:var(--text-dim)}
+.form-submit{grid-column:span 2;display:flex;justify-content:center;margin-top:.6rem}
+.form-note{grid-column:span 2;font-size:.78rem;font-style:italic;color:var(--text-dim);opacity:.85;text-align:center;line-height:1.5}
+@media (max-width:600px){.form-grid{grid-template-columns:1fr}.form-field.full,.form-submit,.form-note{grid-column:span 1}}
+
+/* ============== FORMULE GROUPE CLIQUABLE ============== */
+button.formule{width:100%;text-align:center;font:inherit;color:inherit}
+.formule[role="button"]{cursor:pointer}
+.formule-cta{
+  margin-top:.9rem;font-family:var(--sans);font-size:.66rem;font-weight:700;
+  letter-spacing:.18rem;text-transform:uppercase;color:var(--accent);
+}
+</style>
+</head>
+<body>
+
+<!-- ============== STICKY NAV ============== -->
+<nav class="sticky-nav" id="stickyNav" aria-label="Navigation flottante">
+  <a href="#top" class="sticky-nav-logo" data-nav aria-label="Retour en haut, ROXI">
+    <img src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant Châtelain" width="56" height="56">
+  </a>
+  <div class="sticky-nav-links">
+    <a href="#about" data-nav>À propos</a>
+    <a href="#menu" data-nav>Carte</a>
+    <a href="#groupe" data-nav>Groupes</a>
+    <a href="#contact" data-nav>Contact</a>
+    <a href="#find-us" data-nav>Accès</a>
+    <a href="#avis" data-nav>Avis</a>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <picture>
+      <source srcset="/photo-fond-mobile.webp 600w, /photo-fond.webp 1200w" sizes="100vw" type="image/webp">
+      <img class="hero-bg-img" src="/photo-fond.webp" alt="" width="1200" height="1173" fetchpriority="high" loading="eager" decoding="async">
+    </picture>
+  </div>
+  <div class="hero-inner">
+    <img class="hero-logo" src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant rue du Bailli, Châtelain (Ixelles)" width="240" height="240" decoding="async">
+    <h1 class="visually-hidden">ROXI · Bar & Restaurant · Châtelain · Bruxelles</h1>
+    <p class="hero-italic">Bar · Restaurant · Châtelain · Bruxelles</p>
+
+    <a href="tel:+3226461792" class="hero-cta" aria-label="Appeler ROXI pour réserver au +32 2 646 17 92">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      <span>Réserver au +32 2 646 17 92</span>
+    </a>
+
+    <div class="hero-divider"></div>
+
+    <nav class="hero-nav" aria-label="Navigation principale">
+      <a href="#about" data-nav>À propos</a>
+      <a href="#menu" data-nav>Carte</a>
+      <a href="#groupe" data-nav>Groupes</a>
+      <a href="#contact" data-nav>Contact</a>
+      <a href="#find-us" data-nav>Accès</a>
+      <a href="#avis" data-nav>Avis</a>
+    </nav>
+
+    <div class="social-row">
+      <!-- TODO: remplacer par la vraie URL Instagram ROXI quand connue (et l'ajouter au sameAs du schema) -->
+      <a href="https://www.instagram.com/" class="social-ig" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <!-- TODO: remplacer par la vraie URL Facebook ROXI quand connue (et l'ajouter au sameAs du schema) -->
+      <a href="https://www.facebook.com/" class="social-fb" aria-label="Facebook" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.9v3h2.6V21h3z"/></svg>
+      </a>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g188644-d1223174-Reviews-Roxi-Brussels.html" class="social-ta" aria-label="TripAdvisor" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8.2" cy="12.3" r="3.3"/><circle cx="15.8" cy="12.3" r="3.3"/><circle cx="8.2" cy="12.3" r="1.05" fill="currentColor" stroke="none"/><circle cx="15.8" cy="12.3" r="1.05" fill="currentColor" stroke="none"/><path d="M8.2 8.5c2-1.5 5.6-1.5 7.6 0" stroke-linecap="round"/></svg>
+      </a>
+      <a href="mailto:theroxi2018@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+      </a>
+      <a href="tel:+3226461792" aria-label="Téléphone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============== ABOUT ============== -->
+<section class="section" id="about">
+  <p class="kicker fade-up">Notre histoire</p>
+  <h2 class="section-title fade-up">Le ROXI</h2>
+  <p class="section-italic fade-up">Au cœur du Châtelain depuis 2002, un bar-restaurant comme on les aime.</p>
+
+  <div class="about-wrap">
+    <picture>
+      <source srcset="/assets/placeholder-about-gens.webp" type="image/webp">
+      <img class="about-photo fade-up" src="/assets/placeholder-about-gens.jpg" alt="Salle principale et clientèle du ROXI, bar-restaurant rue du Bailli, Châtelain (Ixelles)" loading="lazy" decoding="async" width="600" height="520">
+    </picture>
+
+    <div class="fade-up">
+      <div class="about-text">
+        <p>Le ROXI est un bar-restaurant situé sur la très tendance rue du Bailli, dans le quartier du Châtelain à Ixelles. Institution du quartier créée en 2002 et reprise par une nouvelle direction en 2018, l'établissement est devenu un lieu de rendez-vous incontournable pour passer du bon temps entre amis, en famille ou en couple, et reste très adapté aux enfants.</p>
+        <p>Côté cuisine, le chef propose le meilleur de la cuisine classique belge en plat du jour : carbonnade flamande, pain de viande, américain préparé, boulettes sauce tomate. Côté bar, les bartenders proposent une sélection de cocktails à base de fruits frais et d'alcools de qualité, avec des créations maison comme le Ginger Power, le Strong Caïpirinha ou le Ti Punch Passion Frais.</p>
+        <p>Deux niveaux : 40 places au rez-de-chaussée et 40 places à l'étage, le tout privatisable. À l'étage, une terrasse en hauteur de 16 places assises offre une belle vue sur le quartier, en plus des terrasses extérieures plein sud. Cuisine ouverte de 11h à 15h et de 17h à 22h, tous les jours.</p>
+      </div>
+      <p class="about-quote">« Une cuisine généreuse, des cocktails inventifs, une terrasse qui appelle le soleil. »</p>
+      <div class="rating">
+        <span class="rating-stars">★★★★★</span>
+        <span>Le QG du Châtelain · Ixelles, Bruxelles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MENU ============== -->
+<section class="section" id="menu">
+  <p class="kicker fade-up">Notre carte</p>
+  <h2 class="section-title fade-up">Manger, boire, profiter</h2>
+  <p class="section-italic fade-up">Cuisine de passion, plus de 25 cocktails, bière belge et sélection vin.</p>
+
+  <div class="lang-toggle fade-up" role="group" aria-label="Langue de la carte">
+    <button type="button" id="lang-fr" class="active" aria-pressed="true">FR</button>
+    <button type="button" id="lang-en" aria-pressed="false">EN</button>
+  </div>
+
+  <div class="menu-grid" id="menu-grid"></div>
+</section>
+
+<!-- ============== GROUPE ============== -->
+<section class="section" id="groupe">
+  <p class="kicker fade-up">Privatisation & groupes</p>
+  <h2 class="section-title fade-up">Vos événements</h2>
+  <p class="section-italic fade-up">L'étage et la terrasse du ROXI sont privatisables jusqu'à 40 personnes pour vos anniversaires, EVJF, afterworks et comités d'entreprise.</p>
+
+  <div class="formules-grid fade-up">
+    <button type="button" class="formule" data-open-reservation aria-label="Réserver la formule 29 € · Plat et Dessert">
+      <div class="formule-price">29 €</div>
+      <div class="formule-label">Plat + Dessert</div>
+      <div class="formule-cta">Réserver →</div>
+    </button>
+    <button type="button" class="formule" data-open-reservation aria-label="Réserver la formule 32 € · Entrée et Plat">
+      <div class="formule-price">32 €</div>
+      <div class="formule-label">Entrée + Plat</div>
+      <div class="formule-cta">Réserver →</div>
+    </button>
+    <button type="button" class="formule" data-open-reservation aria-label="Réserver la formule 36 € · Entrée, Plat et Dessert">
+      <div class="formule-price">36 €</div>
+      <div class="formule-label">Entrée + Plat + Dessert</div>
+      <div class="formule-cta">Réserver →</div>
+    </button>
+  </div>
+
+  <div class="groupe-detail fade-up">
+    <h4>Entrée au choix</h4>
+    <p>Croquettes de fromages · Carpaccio de bœuf · Salade de jambon de Parme & melon</p>
+
+    <h4>Plat au choix</h4>
+    <p>Carbonnade flamande, frites · Tagliatelles aux pleurotes · Saumon frais grillé, légumes poêlés, pommes de terre grenaille</p>
+
+    <h4>Dessert au choix</h4>
+    <p>Tiramisu · Cheesecake maison · Mousse au chocolat</p>
+
+    <div class="btn-center">
+      <button type="button" class="btn-pill" data-open-reservation>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v3M16 2v3M3 9h18M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>
+        <span>Réserver</span>
+      </button>
+    </div>
+
+    <div class="groupe-note">
+      Il est impératif que votre groupe arrive à l'heure exacte de la réservation. Tout retard peut entraîner une dégradation du service pour lequel le ROXI ne sera pas tenu responsable.
+    </div>
+  </div>
+</section>
+
+<!-- ============== CONTACT ============== -->
+<section class="section" id="contact">
+  <p class="kicker fade-up">Pour nous joindre</p>
+  <h2 class="section-title fade-up">Contact</h2>
+  <p class="section-italic fade-up">Une question, une privatisation, une réservation ? On répond.</p>
+
+  <div class="contact-grid fade-up">
+    <div class="contact-block">
+      <h3>Coordonnées</h3>
+      <p><strong>Rue du Bailli 82</strong></p>
+      <p>1050 Ixelles, Bruxelles</p>
+      <p style="margin-top:1rem"><a href="tel:+3226461792">+32 2 646 17 92</a></p>
+      <p style="margin-top:1rem"><a href="mailto:theroxi2018@gmail.com">theroxi2018@gmail.com</a></p>
+      <p class="contact-note">Privatisable pour anniversaires, EVJF, afterworks et événements (jusqu'à 40 pers. à l'étage).</p>
+      <div style="margin-top:1.6rem">
+        <button type="button" class="btn-pill" data-open-reservation>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M3 7l9 6 9-6"/></svg>
+          <span>Nous contacter</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="contact-divider" aria-hidden="true"></div>
+
+    <div class="contact-block">
+      <h3>Horaires</h3>
+      <ul class="hours-list">
+        <li><span class="hours-day">Lundi</span><span class="hours-time">10h30 à 01h00</span></li>
+        <li><span class="hours-day">Mardi</span><span class="hours-time">10h30 à 01h00</span></li>
+        <li><span class="hours-day">Mercredi</span><span class="hours-time">10h30 à 01h00</span></li>
+        <li><span class="hours-day">Jeudi</span><span class="hours-time">10h30 à 01h00</span></li>
+        <li><span class="hours-day">Vendredi</span><span class="hours-time">10h30 à 02h00</span></li>
+        <li><span class="hours-day">Samedi</span><span class="hours-time">10h30 à 02h00</span></li>
+        <li><span class="hours-day">Dimanche</span><span class="hours-time">10h30 à 01h00</span></li>
+      </ul>
+      <p class="contact-note">Cuisine ouverte de 11h à 15h et de 17h à 22h, tous les jours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FIND US ============== -->
+<section class="section" id="find-us">
+  <p class="kicker fade-up">Nous trouver</p>
+  <h2 class="section-title fade-up">Châtelain</h2>
+  <p class="section-italic fade-up">Au cœur du quartier du Châtelain, à deux pas de la Place du même nom.</p>
+
+  <div class="map-wrap fade-up">
+    <!-- TODO: remplacer par l'URL embed avec place_id réel de la fiche GBP ROXI
+         (format : https://www.google.com/maps/embed?pb=!1m18!...!2sROXI...)
+         pour pointer directement sur la fiche avec ses avis Google,
+         au lieu d'une simple recherche par adresse -->
+    <iframe
+      src="https://www.google.com/maps?q=Rue+du+Bailli+82,+1050+Ixelles,+Bruxelles&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Carte · ROXI Bar & Restaurant, Rue du Bailli 82, 1050 Ixelles, Bruxelles"></iframe>
+  </div>
+
+  <div class="access-info">
+    <div class="access-item fade-up">
+      <p class="access-item-label">Tram</p>
+      <p class="access-item-value">81 / 93 · arrêt Bailli</p>
+    </div>
+    <div class="access-item fade-up">
+      <p class="access-item-label">Bus</p>
+      <p class="access-item-value">54 · arrêt Châtelain</p>
+    </div>
+    <div class="access-item fade-up">
+      <p class="access-item-label">Vélo</p>
+      <p class="access-item-value">Villo! station Bailli</p>
+    </div>
+  </div>
+
+  <div class="btn-center fade-up">
+    <a class="btn-pill waze-btn" href="https://waze.com/ul?ll=50.8256251%2C4.3601542&navigate=yes" target="_blank" rel="noopener" aria-label="Itinéraire vers le ROXI avec Waze">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3a8 8 0 0 1 8 8c0 .9-.15 1.76-.43 2.56.27.43.43.94.43 1.49a2.95 2.95 0 0 1-5.6 1.3 11 11 0 0 1-4.8 0 2.95 2.95 0 0 1-5.6-1.3c0-.3.05-.6.13-.87A8 8 0 0 1 12 3z"/><circle cx="9.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><path d="M9.5 13.5c.8.7 1.7 1 2.5 1s1.7-.3 2.5-1" stroke-linecap="round"/></svg>
+      <span>Itinéraire avec Waze</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============== AVIS ============== -->
+<section class="section" id="avis">
+  <p class="kicker fade-up">Ils en parlent</p>
+  <h2 class="section-title fade-up">Avis</h2>
+  <p class="section-italic fade-up">Ce que nos clients disent du ROXI, sur des plats et des boissons de notre carte.</p>
+
+  <div class="avis-grid">
+    <figure class="avis-card fade-up">
+      <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote class="avis-text">« My steak was the best I have eaten in ages and the peppercorn sauce was divine. »</blockquote>
+      <figcaption class="avis-meta"><span>Keith4529</span>TripAdvisor<p class="avis-dish">À propos du Steak de bœuf, sauce poivre vert</p></figcaption>
+    </figure>
+
+    <figure class="avis-card fade-up">
+      <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote class="avis-text">« Un bar avec une ambiance incroyable. Les serveurs sont accueillant, serviables et attentionnés. Le service est rapide. La cuisine extraordinaire et je ne parle même des cocktails qui sont les meilleurs que j’ai pu boire. Un lieu à ne surtout pas rater ! »</blockquote>
+      <figcaption class="avis-meta"><span>Laly Blampain</span>Google avis<p class="avis-dish">À propos de l’ambiance, du service et des cocktails maison</p></figcaption>
+    </figure>
+
+    <figure class="avis-card fade-up">
+      <div class="avis-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <blockquote class="avis-text">« Service au petit soin et cocktails top qualité et leur crêpe au pomme caramélisée délicieuse 😍. Je recommande les yeux fermés »</blockquote>
+      <figcaption class="avis-meta"><span>Wambesso Jonathan Kossi</span>Google avis<p class="avis-dish">À propos des cocktails et de la crêpe aux pommes caramélisées</p></figcaption>
+    </figure>
+  </div>
+
+  <!-- TODO: quand le place_id GBP réel sera connu, remplacer ce lien de recherche
+       par l'URL directe des avis Google (https://search.google.com/local/reviews?placeid=...) -->
+  <div class="btn-center fade-up">
+    <a class="btn-pill" href="https://www.google.com/maps/search/?api=1&query=ROXI%20Rue%20du%20Bailli%2082%201050%20Ixelles" target="_blank" rel="noopener" aria-label="Voir et laisser un avis sur Google">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5 7 13 7 13s7-8 7-13c0-3.9-3.1-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span>Voir les avis Google</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <img class="footer-logo" src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant Châtelain · Ixelles" width="96" height="96" loading="lazy" decoding="async">
+  <p class="footer-tag">Bar · Restaurant · Châtelain · depuis 2018</p>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-address">Rue du Bailli 82<br>1050 Ixelles, Bruxelles</p>
+  <p class="footer-contact">
+    <a href="tel:+3226461792">+32 2 646 17 92</a> · <a href="mailto:theroxi2018@gmail.com">theroxi2018@gmail.com</a>
+  </p>
+
+  <div class="social-row">
+    <!-- TODO: remplacer par la vraie URL Instagram ROXI quand connue (et ajouter au sameAs du schema) -->
+    <a href="https://www.instagram.com/" class="social-ig" aria-label="Instagram ROXI" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+    </a>
+    <!-- TODO: remplacer par la vraie URL Facebook ROXI quand connue (et ajouter au sameAs du schema) -->
+    <a href="https://www.facebook.com/" class="social-fb" aria-label="Facebook ROXI" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H7.9v3h2.6V21h3z"/></svg>
+    </a>
+    <a href="https://www.tripadvisor.com/Restaurant_Review-g188644-d1223174-Reviews-Roxi-Brussels.html" class="social-ta" aria-label="TripAdvisor ROXI" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8.2" cy="12.3" r="3.3"/><circle cx="15.8" cy="12.3" r="3.3"/><circle cx="8.2" cy="12.3" r="1.05" fill="currentColor" stroke="none"/><circle cx="15.8" cy="12.3" r="1.05" fill="currentColor" stroke="none"/><path d="M8.2 8.5c2-1.5 5.6-1.5 7.6 0" stroke-linecap="round"/></svg>
+    </a>
+    <a href="mailto:theroxi2018@gmail.com" aria-label="Email ROXI">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+    </a>
+    <a href="tel:+3226461792" aria-label="Téléphone ROXI">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    </a>
+  </div>
+
+  <nav class="footer-meta" aria-label="Liens légaux">
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <span class="footer-meta-sep" aria-hidden="true">·</span>
+    <a href="/politique-confidentialite.html">Politique de confidentialité</a>
+    <span class="footer-meta-sep" aria-hidden="true">·</span>
+    <span>Carte mise à jour le 19 mai 2026</span>
+  </nav>
+
+  <p class="footer-legal">© 2026 ROXI · Rue du Bailli 82, Ixelles · Tous droits réservés · Site conçu par <a href="mailto:elie.blecher@gmail.com">Elie</a></p>
+</footer>
+
+<div id="menu-modals"></div>
+
+<!-- ============== MODAL RÉSERVATION ============== -->
+<!-- Front uniquement : l'envoi ouvre le client mail du visiteur (mailto) vers theroxi2018@gmail.com.
+     Pour un envoi sans quitter le site, brancher plus tard un service (Formspree, API, etc.)
+     sur la fonction submit du formulaire, voir le script en bas de page. -->
+<div class="modal" id="modal-reservation" role="dialog" aria-modal="true" aria-labelledby="modal-reservation-title" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" type="button" aria-label="Fermer le formulaire" data-close>&times;</button>
+    <div class="modal-content">
+      <h2 class="modal-title" id="modal-reservation-title">Réserver</h2>
+      <p class="modal-italic">Indiquez vos préférences, nous revenons vers vous pour confirmer.</p>
+
+      <form class="form-grid" id="reservation-form" novalidate>
+        <div class="form-field">
+          <label for="r-nom">Nom</label>
+          <input type="text" id="r-nom" name="nom" autocomplete="family-name" required>
+        </div>
+        <div class="form-field">
+          <label for="r-prenom">Prénom</label>
+          <input type="text" id="r-prenom" name="prenom" autocomplete="given-name" required>
+        </div>
+        <div class="form-field">
+          <label for="r-date">Date</label>
+          <input type="date" id="r-date" name="date" required>
+        </div>
+        <div class="form-field">
+          <label for="r-heure">Heure</label>
+          <input type="time" id="r-heure" name="heure" required>
+        </div>
+        <div class="form-field full">
+          <label for="r-contact">Téléphone ou e-mail</label>
+          <input type="text" id="r-contact" name="contact" autocomplete="tel" placeholder="+32 … ou nom@email.com" required>
+        </div>
+        <div class="form-field">
+          <label for="r-type">Type de visite</label>
+          <select id="r-type" name="type" required>
+            <option value="boire">Boire</option>
+            <option value="manger">Manger</option>
+            <option value="les deux">Les deux</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="r-couverts">Nombre de couverts</label>
+          <input type="number" id="r-couverts" name="couverts" min="1" max="100" step="1" value="2" required>
+        </div>
+        <div class="form-field full">
+          <label for="r-remarques">Remarques supplémentaires</label>
+          <textarea id="r-remarques" name="remarques" rows="3"></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            <span>Envoyer la demande</span>
+          </button>
+        </div>
+        <p class="form-note">Votre demande nous parvient par e-mail à theroxi2018@gmail.com. Pour une réservation immédiate, appelez le +32 2 646 17 92.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/menu-data.js"></script>
+<script>
+/* ============== NAVIGATION CLOISONNÉE · UNE SEULE VUE À LA FOIS ==============
+   Au clic sur un lien de nav, on affiche UNIQUEMENT la section ciblée ; les
+   autres sont masquées (hidden). Impossible de scroller vers une section
+   adjacente. La home (hero) est sa propre vue. Tout le contenu reste dans le
+   DOM (bon pour le SEO), on ne fait que basculer la visibilité. */
+const stickyNav = document.getElementById('stickyNav');
+const VIEW_IDS = ['top','about','menu','groupe','contact','find-us','avis'];
+const views = VIEW_IDS.map(id=>document.getElementById(id)).filter(Boolean);
+const navLinks = document.querySelectorAll('a[data-nav]');
+
+function setActive(id){
+  navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+}
+function playFade(view){
+  const els = view.querySelectorAll('.fade-up');
+  els.forEach(el=>el.classList.remove('visible'));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>els.forEach(el=>el.classList.add('visible'))));
+}
+function showView(id){
+  if(!VIEW_IDS.includes(id)) id = 'top';
+  views.forEach(v=>{ v.hidden = (v.id !== id); });
+  const isHero = (id === 'top');
+  stickyNav.classList.toggle('visible', !isHero);
+  setActive(isHero ? '' : id);
+  const target = document.getElementById(id);
+  if(target) playFade(target);
+  window.scrollTo({top:0, behavior:'auto'});
+  history.replaceState(null, '', isHero ? location.pathname + location.search : '#'+id);
+}
+navLinks.forEach(link=>{
+  link.addEventListener('click', e=>{
+    const href = link.getAttribute('href');
+    if(!href || !href.startsWith('#')) return;
+    e.preventDefault();
+    showView(href === '#top' ? 'top' : href.slice(1));
+  });
+});
+window.addEventListener('hashchange', ()=>{
+  showView(VIEW_IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'top');
+});
+/* Vue initiale (deep-link via hash, sinon hero) */
+showView(VIEW_IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'top');
+
+/* ============== MODALS (carte + réservation) ============== */
+let lastFocused = null;
+function openModal(id){
+  const m = document.getElementById('modal-' + id);
+  if(!m) return;
+  lastFocused = document.activeElement;
+  m.classList.add('open');
+  m.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  setTimeout(()=>{ m.querySelector('.modal-close')?.focus(); }, 80);
+}
+function closeModal(m){
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden','true');
+  if(!document.querySelector('.modal.open')){
+    document.body.classList.remove('modal-open');
+  }
+  if(lastFocused && typeof lastFocused.focus === 'function'){
+    lastFocused.focus();
+  }
+}
+/* ============== INTERACTIONS (délégation : modals rendus dynamiquement) ============== */
+document.addEventListener('click', e=>{
+  const card = e.target.closest('.menu-card[data-menu]');
+  if(card){ openModal(card.dataset.menu); return; }
+  if(e.target.closest('[data-open-reservation]')){ openModal('reservation'); return; }
+  const closer = e.target.closest('[data-close]');
+  if(closer){ const m = closer.closest('.modal'); if(m) closeModal(m); }
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){ document.querySelectorAll('.modal.open').forEach(m=>closeModal(m)); return; }
+  if((e.key === 'Enter' || e.key === ' ') && e.target.closest){
+    const card = e.target.closest('.menu-card[data-menu]');
+    if(card){ e.preventDefault(); openModal(card.dataset.menu); }
+  }
+});
+
+/* ============== FORMULAIRE DE RÉSERVATION (front only) ==============
+   Aucun back-end : l'envoi compose un e-mail (mailto) vers theroxi2018@gmail.com.
+   Pour un envoi sans quitter le site, remplacer par un fetch() vers Formspree / API. */
+const resForm = document.getElementById('reservation-form');
+if(resForm){
+  resForm.addEventListener('submit', e=>{
+    e.preventDefault();
+    if(!resForm.reportValidity()) return;
+    const f = resForm;
+    const body =
+      'Demande de réservation ROXI\n' +
+      '\nNom : ' + f.nom.value + ' ' + f.prenom.value +
+      '\nDate : ' + f.date.value +
+      '\nHeure : ' + f.heure.value +
+      '\nContact : ' + f.contact.value +
+      '\nType de visite : ' + f.type.value +
+      '\nNombre de couverts : ' + f.couverts.value +
+      '\nRemarques : ' + (f.remarques.value || '(aucune)');
+    const subject = 'Réservation ROXI · ' + f.nom.value + ' ' + f.prenom.value + ' (' + f.date.value + ' ' + f.heure.value + ')';
+    window.location.href = 'mailto:theroxi2018@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+}
+
+/* ============== CARTE : RENDU DEPUIS /menu-data.js + TOGGLE FR / EN ==============
+   Source unique partagée par les deux versions. Le toggle ne change que la langue
+   de rendu (mêmes items, mêmes prix). Prix reformatés "3,30 €" -> "€3.30" en EN. */
+const grid = document.getElementById('menu-grid');
+const modalsHost = document.getElementById('menu-modals');
+let curLang = 'fr';
+function priceEN(s){ return String(s).replace(/(\d+)(?:,(\d+))?\s*€/g,(m,a,b)=>'€'+a+(b?'.'+b:'')); }
+function P(s,lang){ if(!s) return ''; return lang==='en' ? priceEN(s) : s; }
+function D(it,lang){ return (it.d && it.d[lang]) ? it.d[lang] : ''; }
+function renderCards(lang){
+  if(!grid || !window.MENU) return;
+  grid.innerHTML = MENU.sections.map(function(s){
+    const c = s.card[lang];
+    return '<article class="menu-card fade-up" role="button" tabindex="0" data-menu="'+s.key+'" aria-haspopup="dialog" aria-controls="modal-'+s.key+'">'
+      + '<div class="menu-card-bg" style="background-image:url(\''+s.photo+'\')"></div>'
+      + '<div class="menu-card-content">'
+      + '<h3 class="menu-card-title">'+c.title+'</h3>'
+      + '<p class="menu-card-italic">'+c.italic+'</p>'
+      + '<p class="menu-card-desc">'+c.desc+'</p>'
+      + '<p class="menu-card-price">'+c.price+'</p>'
+      + '</div></article>';
+  }).join('');
+}
+function renderModals(lang){
+  if(!modalsHost || !window.MENU) return;
+  const close = lang==='en' ? 'Close menu' : 'Fermer la carte';
+  modalsHost.innerHTML = MENU.sections.map(function(s){
+    const m = s.modal[lang];
+    let h = '<div class="modal" id="modal-'+s.key+'" role="dialog" aria-modal="true" aria-labelledby="modal-'+s.key+'-title" aria-hidden="true">'
+      + '<div class="modal-backdrop" data-close></div><div class="modal-panel">'
+      + '<button class="modal-close" type="button" aria-label="'+close+'" data-close>&times;</button>'
+      + '<div class="modal-content"><h2 class="modal-title" id="modal-'+s.key+'-title">'+m.title+'</h2>'
+      + '<p class="modal-italic">'+m.italic+'</p>';
+    s.groups.forEach(function(g){
+      h += '<div class="modal-section"><h3 class="modal-section-title">'+g.t[lang]+'</h3>';
+      if(g.nt) h += '<p class="modal-section-note">'+g.nt[lang]+'</p>';
+      if(g.cols){
+        h += '<div class="modal-priced-header"><span></span><span>'+(g.cols[0]||'')+'</span><span>'+(g.cols[1]||'')+'</span><span>'+(g.cols[2]||'')+'</span></div>';
+        g.items.forEach(function(it){ const p=it.p||[];
+          h += '<div class="modal-priced-row"><div><span class="item-name">'+it.n+'</span>'
+            + (D(it,lang)?'<span class="item-desc">'+D(it,lang)+'</span>':'')
+            + '</div><span class="item-price">'+P(p[0],lang)+'</span><span class="item-price">'+P(p[1],lang)+'</span><span class="item-price">'+P(p[2],lang)+'</span></div>';
+        });
+      } else {
+        g.items.forEach(function(it){
+          h += '<div class="modal-row"><div><span class="item-name">'+it.n+'</span>'
+            + (D(it,lang)?'<span class="item-desc">'+D(it,lang)+'</span>':'')
+            + '</div><span class="item-price">'+P(it.p,lang)+'</span></div>';
+        });
+      }
+      if(g.nb) h += '<p class="modal-section-note" style="margin-top:.8rem;margin-bottom:0">'+g.nb[lang]+'</p>';
+      h += '</div>';
+    });
+    h += '</div></div></div>';
+    return h;
+  }).join('');
+}
+function renderMenu(lang){
+  curLang = lang;
+  renderCards(lang);
+  renderModals(lang);
+  const mv = document.getElementById('menu');
+  if(mv && !mv.hidden) playFade(mv);
+}
+function setLangBtn(lang){
+  const fr=document.getElementById('lang-fr'), en=document.getElementById('lang-en');
+  if(!fr||!en) return;
+  fr.classList.toggle('active', lang==='fr'); en.classList.toggle('active', lang==='en');
+  fr.setAttribute('aria-pressed', lang==='fr'); en.setAttribute('aria-pressed', lang==='en');
+}
+document.getElementById('lang-fr') && document.getElementById('lang-fr').addEventListener('click', function(){ if(curLang!=='fr'){ renderMenu('fr'); } setLangBtn('fr'); });
+document.getElementById('lang-en') && document.getElementById('lang-en').addEventListener('click', function(){ if(curLang!=='en'){ renderMenu('en'); } setLangBtn('en'); });
+renderMenu('fr'); setLangBtn('fr');
+</script>
+
+</body>
+</html>
