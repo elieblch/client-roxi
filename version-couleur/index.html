@@ -39,10 +39,10 @@
   type="image/webp" fetchpriority="high">
 
 <!-- Favicon & app icons -->
-<link rel="icon" type="image/svg+xml" href="/Logos/roxi-logo-01-vert-rose.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/Logos/roxi-logo-bailli-couleur.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-couleur.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16-couleur.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-couleur.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="restaurant.restaurant">
@@ -81,7 +81,7 @@
       "alternateName": "ROXI Bailli",
       "description": "Bar-restaurant au cœur du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud. Ouvert 7j/7 dès 10h30.",
       "url": "https://client-roxi.vercel.app/",
-      "logo": "https://client-roxi.vercel.app/Logos/roxi-logo-01-vert-rose.svg",
+      "logo": "https://client-roxi.vercel.app/Logos/roxi-logo-bailli-couleur.svg",
       "image": [
         "https://client-roxi.vercel.app/og-image.jpg",
         "https://client-roxi.vercel.app/photo-cocktail.webp",
@@ -1029,6 +1029,19 @@ body.modal-open{overflow:hidden}
 .waze-btn:hover,.waze-btn:focus-visible{background:#16b8ef;border-color:#16b8ef;color:#fff;transform:translateY(-1px)}
 .waze-btn svg{width:18px;height:18px}
 
+/* ============== HERO · VERSION COULEUR (overrides spécifiques page d'accueil) ============== */
+/* Tagline et nav en blanc pour mieux ressortir sur la photo de fond.
+   Mail = blanc sur bleu, Téléphone = blanc sur vert (codes universels). */
+.hero .hero-italic{color:#fff}
+.hero-nav a{color:#fff;font-weight:700;font-size:.88rem;letter-spacing:.32rem}
+.hero-nav a:hover,.hero-nav a:focus-visible{color:var(--accent)}
+.hero .social-row a[href^="mailto:"]{color:#fff;border-color:transparent;background:#1A73E8}
+.hero .social-row a[href^="mailto:"]:hover{background:#1558b0;transform:translateY(-2px)}
+.hero .social-row a[href^="tel:"]{color:#fff;border-color:transparent;background:#25D366}
+.hero .social-row a[href^="tel:"]:hover{background:#1aaa53;transform:translateY(-2px)}
+@media (max-width:900px){.hero-nav a{font-size:.78rem;letter-spacing:.24rem}}
+@media (max-width:600px){.hero-nav a{font-size:.72rem;letter-spacing:.18rem}}
+
 /* ============== AVIS ============== */
 .avis-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
@@ -1089,7 +1102,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
 <!-- ============== STICKY NAV ============== -->
 <nav class="sticky-nav" id="stickyNav" aria-label="Navigation flottante">
   <a href="#top" class="sticky-nav-logo" data-nav aria-label="Retour en haut, ROXI">
-    <img src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant Châtelain" width="56" height="56">
+    <img src="/Logos/roxi-logo-bailli-couleur.svg" alt="Logo ROXI · Bar & Restaurant Châtelain" width="56" height="56">
   </a>
   <div class="sticky-nav-links">
     <a href="#about" data-nav>À propos</a>
@@ -1110,7 +1123,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
     </picture>
   </div>
   <div class="hero-inner">
-    <img class="hero-logo" src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant rue du Bailli, Châtelain (Ixelles)" width="240" height="240" decoding="async">
+    <img class="hero-logo" src="/Logos/roxi-logo-bailli-couleur.svg" alt="Logo ROXI · Bar & Restaurant rue du Bailli, Châtelain (Ixelles)" width="240" height="240" decoding="async">
     <h1 class="visually-hidden">ROXI · Bar & Restaurant · Châtelain · Bruxelles</h1>
     <p class="hero-italic">Bar · Restaurant · Châtelain · Bruxelles</p>
 
@@ -1359,7 +1372,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
 
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
-  <img class="footer-logo" src="/Logos/roxi-logo-bailli.svg" alt="Logo ROXI · Bar & Restaurant Châtelain · Ixelles" width="96" height="96" loading="lazy" decoding="async">
+  <img class="footer-logo" src="/Logos/roxi-logo-bailli-couleur.svg" alt="Logo ROXI · Bar & Restaurant Châtelain · Ixelles" width="96" height="96" loading="lazy" decoding="async">
   <p class="footer-tag">Bar · Restaurant · Châtelain · depuis 2018</p>
 
   <div class="footer-divider"></div>
