@@ -244,7 +244,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   display:flex;gap:1.6rem;
   font-size:.72rem;letter-spacing:.25rem;text-transform:uppercase;
 }
-.sticky-nav-links a{position:relative;padding:.3rem 0}
+.sticky-nav-links a{position:relative;padding:.3rem 0;font-weight:700}
 .sticky-nav-links a:hover{color:var(--accent)}
 .sticky-nav-links a.active{color:var(--accent)}
 .sticky-nav-links a.active::after{
@@ -1476,7 +1476,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
   </div>
 </div>
 
-<script src="/menu-data.js"></script>
+<script src="/menu-data-couleur.js"></script>
 <script>
 /* ============== NAVIGATION CLOISONNÉE · UNE SEULE VUE À LA FOIS ==============
    Au clic sur un lien de nav, on affiche UNIQUEMENT la section ciblée ; les
@@ -1500,12 +1500,35 @@ function showView(id){
   if(!VIEW_IDS.includes(id)) id = 'top';
   views.forEach(v=>{ v.hidden = (v.id !== id); });
   const isHero = (id === 'top');
-  stickyNav.classList.toggle('visible', !isHero);
+  /* Page d'accueil : on rend aussi #about visible juste sous le hero
+     (même élément DOM, pas de duplication de contenu). */
+  if(isHero){
+    const about = document.getElementById('about');
+    if(about){ about.hidden = false; playFade(about); }
+  }
   setActive(isHero ? '' : id);
   const target = document.getElementById(id);
   if(target) playFade(target);
   window.scrollTo({top:0, behavior:'auto'});
   history.replaceState(null, '', isHero ? location.pathname + location.search : '#'+id);
+}
+/* Sticky-nav apparaît dès que le hero quitte le viewport (incluant le scroll
+   home → about, et toutes les vues non-hero où le hero est en display:none). */
+const _heroEl = document.getElementById('top');
+if(_heroEl){
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>stickyNav.classList.toggle('visible', !e.isIntersecting));
+  },{threshold:0, rootMargin:'-80px 0px 0px 0px'}).observe(_heroEl);
+}
+/* Scroll-spy léger : sur la page d'accueil, surligner « À propos » quand la
+   section #about entre dans le viewport. Inactif sur les autres vues (highlight
+   fixé par le clic). */
+const _aboutEl = document.getElementById('about');
+if(_aboutEl){
+  new IntersectionObserver(entries=>{
+    if(document.getElementById('top').hidden) return;
+    entries.forEach(e=>setActive(e.isIntersecting ? 'about' : ''));
+  },{threshold:0.35}).observe(_aboutEl);
 }
 navLinks.forEach(link=>{
   link.addEventListener('click', e=>{
@@ -1581,9 +1604,11 @@ if(resForm){
   });
 }
 
-/* ============== CARTE : RENDU DEPUIS /menu-data.js + TOGGLE FR / EN ==============
-   Source unique partagée par les deux versions. Le toggle ne change que la langue
-   de rendu (mêmes items, mêmes prix). Prix reformatés "3,30 €" -> "€3.30" en EN. */
+/* ============== CARTE : RENDU DEPUIS /menu-data-couleur.js + TOGGLE FR / EN ==============
+   Données spécifiques à la version couleur (7 sections : carte officielle avec
+   Alcool et Soft séparés, photos vin-et-bulles et cocktails-update). La version
+   monochrome a son propre /menu-data.js (6 sections). Toggle FR/EN sans
+   changer ni items ni prix. Prix reformatés "3,30 €" -> "€3.30" en EN. */
 const grid = document.getElementById('menu-grid');
 const modalsHost = document.getElementById('menu-modals');
 let curLang = 'fr';
@@ -1594,7 +1619,7 @@ function renderCards(lang){
   if(!grid || !window.MENU) return;
   grid.innerHTML = MENU.sections.map(function(s){
     const c = s.card[lang];
-    return '<article class="menu-card fade-up" role="button" tabindex="0" data-menu="'+s.key+'" aria-haspopup="dialog" aria-controls="modal-'+s.key+'">'
+    return '<article class="menu-card'+(s.wide?' menu-card-wide':'')+' fade-up" role="button" tabindex="0" data-menu="'+s.key+'" aria-haspopup="dialog" aria-controls="modal-'+s.key+'">'
       + '<div class="menu-card-bg" style="background-image:url(\''+s.photo+'\')"></div>'
       + '<div class="menu-card-content">'
       + '<h3 class="menu-card-title">'+c.title+'</h3>'
