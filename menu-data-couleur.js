@@ -17,7 +17,7 @@ window.MENU = {
     /* ============ 1. BIÈRES ============ */
     {
       key: "bieres",
-      photo: "/photo-biere.webp",
+      photo: "/photos/photo-biere.webp",
       card: {
         fr: { title:"Bières", italic:"Belges, au fût & en bouteille",
               desc:"Cristal, Blanche de Bruges, Grimbergen et Juicy «crime passion» au fût ; Chimay, Duvel, Chouffe, Orval et plus en bouteille.",
@@ -57,7 +57,7 @@ window.MENU = {
     /* ============ 2. FOOD / CUISINE ============ */
     {
       key: "food",
-      photo: "/photo-plat.webp",
+      photo: "/photos/photo-plat.webp",
       card: {
         fr: { title:"Cuisine", italic:"Du finger food au plat signature",
               desc:"Finger food, planches, pâtes, salades, viandes, poissons, burgers, pizzas et desserts maison.",
@@ -151,7 +151,7 @@ window.MENU = {
     /* ============ 3. COCKTAILS ============ */
     {
       key: "cocktails",
-      photo: "/cocktails-update.webp",
+      photo: "/photos/cocktails-update.webp",
       card: {
         fr: { title:"Cocktails", italic:"Maison & créations signature",
               desc:"18 cocktails, 6 sans alcool et 4 créations « Roxi's Special », à base de fruits frais.",
@@ -205,7 +205,7 @@ window.MENU = {
     /* ============ 4. ALCOOL ============ */
     {
       key: "alcool",
-      photo: "/alcool-soft.webp",
+      photo: "/photos/alcool-soft.webp",
       card: {
         fr: { title:"Alcool", italic:"Apéritifs, spiritueux & digestifs",
               desc:"Apéritifs, rhums, vodkas, gins, whiskies, tequilas et digestifs servis au verre.",
@@ -258,7 +258,7 @@ window.MENU = {
     /* ============ 5. SOFT ============ */
     {
       key: "soft",
-      photo: "/photo-soft.webp",
+      photo: "/photos/photo-soft.webp",
       card: {
         fr: { title:"Soft", italic:"Sodas, jus & limonade maison",
               desc:"Sodas, eaux, jus frais, thé glacé et limonade maison, Red Bull.",
@@ -301,7 +301,7 @@ window.MENU = {
     /* ============ 6. CAFÉ / BOISSONS CHAUDES ============ */
     {
       key: "cafe",
-      photo: "/photo-cafe.webp",
+      photo: "/photos/photo-cafe.webp",
       card: {
         fr: { title:"Café & boissons chaudes", italic:"Pour les après-midis posés",
               desc:"Expresso, cappuccino, lait russe, café frappé maison, thés, chocolat chaud, Irish coffee.",
@@ -339,7 +339,7 @@ window.MENU = {
     {
       key: "vins",
       wide: true,
-      photo: "/vin-et-bulles.webp",
+      photo: "/photos/vin-et-bulles.webp",
       card: {
         fr: { title:"Vins & bulles", italic:"Verre · demi · bouteille",
               desc:"Vins maison du Pays d'Oc, Alsace, Bordeaux, Côtes du Rhône, blancs bio. Cava, Prosecco, Champagnes.",
