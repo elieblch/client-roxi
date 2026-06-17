@@ -5,3 +5,9 @@
 # Editor / OS noise
 *.swp
 Thumbs.db
+
+# graphify generated artifacts (knowledge graph) — never commit, regenerate locally
+graphify-out/
+
+# Sauvegardes locales avant nettoyage (orphelins déplacés, jamais commitées)
+backup-cleanup-AVANT/
