@@ -1,0 +1,29 @@
+# ============================================================
+# robots.txt — ROXI (version-couleur)
+# TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be)
+#   puis retirer la meta noindex de index.html (cf. notes projet).
+# ============================================================
+
+# ─── Crawlers de recherche classiques ───
+User-agent: *
+Allow: /
+
+# ─── AI crawlers : autorisés (citabilité ChatGPT, Claude, Perplexity, Gemini) ───
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://DOMAINE_FINAL/sitemap.xml

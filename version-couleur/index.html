@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <!--
   =====================================================================
-  @canonical-domain: https://client-roxi.vercel.app
-  → URL provisoire (preview Vercel). Le jour où un domaine custom est
-    branché (ex: https://www.roxi.be), mettre à jour TOUTES les
-    occurrences via la commande suivante :
+  @canonical-domain: https://DOMAINE_FINAL   (PLACEHOLDER)
+  → Toutes les URLs absolues utilisent le placeholder DOMAINE_FINAL.
+    Le jour où le domaine custom (.be) est branché, remplacer TOUTES les
+    occurrences en une fois :
 
-    grep -rln "client-roxi.vercel.app" Roxi/ | xargs sed -i '' \
-      's|https://client-roxi.vercel.app|https://NOUVEAU-DOMAINE|g'
+    grep -rln "DOMAINE_FINAL" . --include='*.html' --include='*.xml' --include='*.txt' \
+      | xargs sed -i '' 's|DOMAINE_FINAL|www.roxi.be|g'
 
-    Endroits concernés (cf. notes projet section "Domaine canonique") :
+    Endroits concernés :
     - <link rel="canonical">      (head)
-    - og:url                      (Open Graph)
-    - JSON-LD : @id, url, logo, image (5 occurrences dans @graph)
-    - sitemap.xml                 (à créer bloc 3)
-    - robots.txt                  (Sitemap: line, bloc 3)
+    - og:url, og:image, twitter:image   (Open Graph / Twitter)
+    - JSON-LD : @id, url, logo, image (@graph)
+    - JSON-LD sameAs : DOMAINE_FINAL_INSTAGRAM_ROXI / _FACEBOOK_ROXI
+      → remplacer par les vraies URLs des profils sociaux ROXI
+    - robots.txt (ligne Sitemap:) + sitemap.xml (<loc>)
+    - retirer la balise <meta name="robots" content="noindex, nofollow">
   =====================================================================
 -->
 <html lang="fr">
@@ -30,7 +32,8 @@
 <meta name="robots" content="noindex, nofollow">
 
 <!-- Canonical -->
-<link rel="canonical" href="https://client-roxi.vercel.app/">
+<!-- TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be) -->
+<link rel="canonical" href="https://DOMAINE_FINAL/">
 
 <!-- Preload LCP : hero image (critical perf, responsive) -->
 <link rel="preload" as="image"
