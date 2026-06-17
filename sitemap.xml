@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://client-roxi.vercel.app/version-couleur/</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://DOMAINE_FINAL/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://client-roxi.vercel.app/mentions-legales.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://client-roxi.vercel.app/politique-confidentialite.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>

@@ -11,3 +11,6 @@ graphify-out/
 
 # Sauvegardes locales avant nettoyage (orphelins déplacés, jamais commitées)
 backup-cleanup-AVANT/
+
+# Sauvegarde avant promotion racine (non commitée)
+backup-promote-AVANT/

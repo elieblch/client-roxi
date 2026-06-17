@@ -1,19 +1,29 @@
-# robots.txt — ROXI Bar & Restaurant
-# Châtelain, Ixelles · Bruxelles
-#
-# ÉTAT PROVISOIRE : DISALLOW TOTAL pendant la phase preview Vercel.
-# Le site est servi sur https://client-roxi.vercel.app/ uniquement pour
-# validation interne par le propriétaire pendant ~2 semaines.
-#
-# Le jour de la bascule sur le domaine custom (ex : roxi.be), remplacer
-# le contenu de ce fichier par la version production documentée dans les
-# notes projet (section 6).
-#
-# Last updated: 2026-05-20
+# ============================================================
+# robots.txt — ROXI (version-couleur)
+# TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be)
+#   puis retirer la meta noindex de index.html (cf. notes projet).
+# ============================================================
 
+# ─── Crawlers de recherche classiques ───
 User-agent: *
-Disallow: /
+Allow: /
 
-# Sitemap reste référencé : non crawlé tant que Disallow: / est actif,
-# mais prêt pour le jour de la bascule.
-Sitemap: https://client-roxi.vercel.app/sitemap.xml
+# ─── AI crawlers : autorisés (citabilité ChatGPT, Claude, Perplexity, Gemini) ───
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://DOMAINE_FINAL/sitemap.xml
