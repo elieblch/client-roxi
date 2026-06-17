@@ -1486,9 +1486,9 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
 <div id="menu-modals"></div>
 
 <!-- ============== MODAL RÉSERVATION ============== -->
-<!-- Front uniquement : l'envoi ouvre le client mail du visiteur (mailto) vers theroxi2018@gmail.com.
-     Pour un envoi sans quitter le site, brancher plus tard un service (Formspree, API, etc.)
-     sur la fonction submit du formulaire, voir le script en bas de page. -->
+<!-- Envoi via Web3Forms en AJAX (fetch) : la demande part directement vers la
+     boîte e-mail du restaurant, sans ouvrir le client mail du visiteur et sans
+     quitter la page. Voir le handler submit du formulaire en bas de page. -->
 <div class="modal" id="modal-reservation" role="dialog" aria-modal="true" aria-labelledby="modal-reservation-title" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
   <div class="modal-panel">
@@ -1526,7 +1526,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
         </div>
         <div class="form-field">
           <label for="r-type">Type de visite</label>
-          <select id="r-type" name="type" required>
+          <select id="r-type" name="type_visite" required>
             <option value="boire">Boire</option>
             <option value="manger">Manger</option>
             <option value="les deux">Les deux</option>
@@ -1538,7 +1538,7 @@ button.formule{width:100%;text-align:center;font:inherit;color:inherit}
         </div>
         <div class="form-field full">
           <label for="r-remarques">Remarques supplémentaires</label>
-          <textarea id="r-remarques" name="remarques" rows="3"></textarea>
+          <textarea id="r-remarques" name="message" rows="3"></textarea>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn-pill" id="r-submit">
