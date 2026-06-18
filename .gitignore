@@ -14,3 +14,6 @@ backup-cleanup-AVANT/
 
 # Sauvegarde avant promotion racine (non commitée)
 backup-promote-AVANT/
+
+# Sauvegarde du doublon version-couleur avant suppression (non commitée)
+backup-versioncouleur-AVANT/

@@ -1,5 +1,5 @@
 # ============================================================
-# robots.txt — ROXI (version-couleur)
+# robots.txt — ROXI Bar & Restaurant
 # TODO migration domaine : remplacer www.roxi-officiel.be par le domaine custom (.be)
 #   puis retirer la meta noindex de index.html (cf. notes projet).
 # ============================================================
