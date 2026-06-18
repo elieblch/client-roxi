@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
-  @canonical-domain: https://client-roxi.vercel.app
-  Voir notes projet pour la procédure de migration de domaine.
+  @canonical-domain: https://DOMAINE_FINAL   (PLACEHOLDER)
+  Remplacer DOMAINE_FINAL par le domaine custom (.be) à la migration.
+  Page légale : reste volontairement en noindex,follow (faible valeur SEO).
 -->
 <html lang="fr">
 <head>
@@ -10,14 +11,27 @@
 <meta name="theme-color" content="#1F3329">
 <title>Mentions légales — ROXI Bar & Restaurant · Châtelain</title>
 <meta name="description" content="Mentions légales du site ROXI, bar-restaurant rue du Bailli, Châtelain (Ixelles). Éditeur, hébergeur, propriété intellectuelle, contact.">
-<!-- 🔴 PROVISOIRE preview Vercel : à passer en "index, follow" (ou retirer) lors de la bascule sur le domaine custom. Voir notes projet §6. -->
-<meta name="robots" content="noindex, nofollow">
+<!-- Page légale : noindex,follow volontaire (faible valeur SEO, lien juice transmis). À conserver après la bascule de domaine. -->
+<meta name="robots" content="noindex, follow">
 
-<link rel="canonical" href="https://client-roxi.vercel.app/mentions-legales.html">
+<!-- TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be) -->
+<link rel="canonical" href="https://DOMAINE_FINAL/mentions-legales.html">
 <link rel="icon" type="image/png" sizes="512x512" href="/logos/roxi-logo-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/logos/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/logos/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/logos/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ROXI">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:url" content="https://DOMAINE_FINAL/mentions-legales.html">
+<meta property="og:title" content="Mentions légales — ROXI Bar & Restaurant · Châtelain">
+<meta property="og:description" content="Mentions légales du site ROXI, bar-restaurant rue du Bailli, Châtelain (Ixelles). Éditeur, hébergeur, propriété intellectuelle, contact.">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mentions légales — ROXI Bar & Restaurant · Châtelain">
+<meta name="twitter:description" content="Mentions légales du site ROXI, bar-restaurant rue du Bailli, Châtelain (Ixelles). Éditeur, hébergeur, propriété intellectuelle, contact.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
