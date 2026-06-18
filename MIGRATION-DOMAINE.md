@@ -1,6 +1,8 @@
 # 🔴 MIGRATION DOMAINE — Checklist du jour J
 
-> Document de référence à exécuter le jour où ROXI passe de `client-roxi.vercel.app` au domaine custom (ex : `roxi.be`, `roxibar.be`, `roxi-officiel.be`…). Ne rien sauter, ne rien faire dans le désordre.
+> ✅ **Pré-migration réconciliée le 2026-06-17** : contenu promu à la racine (`index.html` + `robots.txt` + `sitemap.xml` production), pages légales passées en SEO (canonical/OG + `noindex,follow`), `sameAs` réels posés (Instagram, Facebook, TripAdvisor). **Le code n'utilise plus `client-roxi.vercel.app` : toutes les URLs absolues sont en placeholder `DOMAINE_FINAL`.** Les Phases 2 et 3 ci-dessous ciblent donc `DOMAINE_FINAL`.
+
+> Document de référence à exécuter le jour où ROXI passe au domaine custom (ex : `roxi.be`, `roxibar.be`, `roxi-officiel.be`…). Ne rien sauter, ne rien faire dans le désordre.
 
 **Hypothèses** :
 - Le domaine custom est enregistré et tu en es propriétaire / admin DNS
@@ -8,7 +10,9 @@
 - Tu as accès à Google Search Console et Bing Webmaster Tools (avec le compte email du propriétaire)
 
 **Convention dans ce document** :
+- `DOMAINE_FINAL` = le placeholder présent **dans le code** (HTML, sitemap, robots.txt) pour toutes les URLs absolues. Host nu, sans `https://` ni `/`.
 - `NOUVEAU-DOMAINE` = à remplacer partout par ton vrai domaine final, **sans `https://` ni `/`** (ex : `roxi.be`)
+- La migration consiste à remplacer `DOMAINE_FINAL` → `NOUVEAU-DOMAINE` partout (cf. Phase 2).
 - Toutes les commandes sont exécutées depuis `/Users/user/Desktop/Cours/Travail_Perso/Creation_Site/Roxi/`
 
 ---
@@ -57,52 +61,58 @@
 
 ⚠️ **Faire tous les `sed` dans le même commit pour cohérence**. Vérifier avant de pusher.
 
-- [ ] **Remplacer le domaine partout** (HTML, sitemap, robots.txt, notes projet) :
+- [ ] **Remplacer le placeholder `DOMAINE_FINAL` partout** (HTML racine + version-couleur/, sitemap, robots.txt, notes projet) :
   ```bash
   cd /Users/user/Desktop/Cours/Travail_Perso/Creation_Site/Roxi
-  grep -rln "client-roxi.vercel.app" . \
+  grep -rln "DOMAINE_FINAL" . \
     --include='*.html' --include='*.xml' --include='*.txt' --include='*.md' \
-    | xargs sed -i '' 's|client-roxi.vercel.app|NOUVEAU-DOMAINE|g'
+    | xargs sed -i '' 's|DOMAINE_FINAL|NOUVEAU-DOMAINE|g'
   ```
-  Remarque : on retire à la fois `https://client-roxi.vercel.app` et `client-roxi.vercel.app` nu.
+  Remarque : `DOMAINE_FINAL` est toujours utilisé comme host nu dans `https://DOMAINE_FINAL/…` ; le remplacer par le host nu suffit. Les profils sociaux (`sameAs`) sont déjà en URLs réelles, ils ne contiennent pas `DOMAINE_FINAL`.
 
 - [ ] **Vérifier qu'il ne reste aucune occurrence** :
   ```bash
-  grep -rn "client-roxi.vercel.app" . --include='*.html' --include='*.xml' --include='*.txt' --include='*.md'
+  grep -rn "DOMAINE_FINAL" . --include='*.html' --include='*.xml' --include='*.txt' --include='*.md'
   # Doit ne rien retourner.
   ```
 
 - [ ] **Vérifier les fichiers touchés** :
   ```bash
   git diff --stat
-  # Attendu : index.html, mentions-legales.html, politique-confidentialite.html,
-  # robots.txt, sitemap.xml, CLAUDE.md, MIGRATION-DOMAINE.md
+  # Attendu : index.html, version-couleur/index.html, mentions-legales.html,
+  # politique-confidentialite.html, robots.txt, sitemap.xml,
+  # version-couleur/robots.txt, version-couleur/sitemap.xml, MIGRATION-DOMAINE.md
   ```
 
 ---
 
 ## PHASE 3 — Désactiver le `noindex` (5 min)
 
-### 3.1 — Retirer la meta robots des 3 HTML
+### 3.1 — Retirer la meta robots de la home
 
-- [ ] **Une commande sed couvre les 3 fichiers** :
+> ℹ️ Depuis la réconciliation, les pages légales sont **déjà** en `noindex, follow` (choix volontaire conservé). **Seule la home `index.html` reste à dé-noindexer.** Ne touche pas aux pages légales.
+
+- [ ] **Retirer le noindex de la home uniquement** (`index.html` racine + `version-couleur/index.html` preview) :
   ```bash
   cd /Users/user/Desktop/Cours/Travail_Perso/Creation_Site/Roxi
-  for f in index.html mentions-legales.html politique-confidentialite.html; do
+  for f in index.html version-couleur/index.html; do
     # Supprime la balise noindex + son commentaire HTML adjacent
     perl -i -0pe 's|<!--[^>]*PROVISOIRE[^>]*-->\s*\n\s*<meta name="robots" content="noindex, nofollow">\s*\n||gs' "$f"
   done
   ```
 
-- [ ] **Vérifier qu'aucune meta robots noindex ne traîne** :
+- [ ] **Vérifier que la home n'est plus en noindex** :
   ```bash
-  grep -n 'noindex' *.html
-  # Doit ne rien retourner (sauf éventuellement des commentaires inoffensifs).
+  grep -n 'noindex' index.html version-couleur/index.html && echo "⚠ noindex encore présent" || echo "✓ home propre"
+  # Les pages légales DOIVENT rester en 'noindex, follow' (normal).
   ```
 
-- [ ] **Option alternative** : si tu veux garder `mentions-legales.html` et `politique-confidentialite.html` en `noindex` (pratique courante pour les pages légales sans valeur SEO), remplacer dans ces 2 fichiers UNIQUEMENT par `<meta name="robots" content="noindex, follow">`. La home doit absolument être indexable.
+### 3.2 — `robots.txt` : déjà en version production
 
-### 3.2 — Réécrire le `robots.txt` en version production
+> ℹ️ Depuis la réconciliation, `robots.txt` (racine) est **déjà** en version production (`Allow: /` + crawlers IA), avec `Sitemap: https://DOMAINE_FINAL/sitemap.xml`. Le sed de la **Phase 2** a déjà remplacé `DOMAINE_FINAL` par ton domaine. **Aucune réécriture n'est nécessaire** — vérifie simplement le contenu avec `cat robots.txt`.
+
+<details>
+<summary>Variante : réécrire le fichier from scratch (optionnel, si besoin)</summary>
 
 - [ ] **Écraser le fichier avec la version production** :
   ```bash
@@ -158,6 +168,8 @@
   ```bash
   cat robots.txt
   ```
+
+</details>
 
 ---
 
