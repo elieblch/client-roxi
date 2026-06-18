@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <!--
   =====================================================================
-  @canonical-domain: https://DOMAINE_FINAL   (PLACEHOLDER)
-  → Toutes les URLs absolues utilisent le placeholder DOMAINE_FINAL.
+  @canonical-domain: https://www.roxi-officiel.be   (PLACEHOLDER)
+  → Toutes les URLs absolues utilisent le placeholder www.roxi-officiel.be.
     Le jour où le domaine custom (.be) est branché, remplacer TOUTES les
     occurrences en une fois :
 
-    grep -rln "DOMAINE_FINAL" . --include='*.html' --include='*.xml' --include='*.txt' \
-      | xargs sed -i '' 's|DOMAINE_FINAL|www.roxi.be|g'
+    grep -rln "www.roxi-officiel.be" . --include='*.html' --include='*.xml' --include='*.txt' \
+      | xargs sed -i '' 's|www.roxi-officiel.be|www.roxi.be|g'
 
     Endroits concernés :
     - <link rel="canonical">      (head)
@@ -30,8 +30,8 @@
 <meta name="robots" content="noindex, nofollow">
 
 <!-- Canonical -->
-<!-- TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be) -->
-<link rel="canonical" href="https://DOMAINE_FINAL/">
+<!-- TODO migration domaine : remplacer www.roxi-officiel.be par le domaine custom (.be) -->
+<link rel="canonical" href="https://www.roxi-officiel.be/">
 
 <!-- Preload LCP : hero image (critical perf, responsive) -->
 <link rel="preload" as="image"
@@ -49,10 +49,10 @@
 <meta property="og:type" content="restaurant.restaurant">
 <meta property="og:site_name" content="ROXI">
 <meta property="og:locale" content="fr_BE">
-<meta property="og:url" content="https://DOMAINE_FINAL/">
+<meta property="og:url" content="https://www.roxi-officiel.be/">
 <meta property="og:title" content="ROXI · Bar à cocktails & Restaurant · Châtelain, Bruxelles">
 <meta property="og:description" content="Bar à cocktails & restaurant ROXI au Châtelain, rue du Bailli à Ixelles (Bruxelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
-<meta property="og:image" content="https://DOMAINE_FINAL/photos/og-image.jpg">
+<meta property="og:image" content="https://www.roxi-officiel.be/photos/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -62,7 +62,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ROXI · Bar à cocktails & Restaurant · Châtelain, Bruxelles">
 <meta name="twitter:description" content="Bar à cocktails & restaurant ROXI au Châtelain, rue du Bailli à Ixelles (Bruxelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
-<meta name="twitter:image" content="https://DOMAINE_FINAL/photos/og-image.jpg">
+<meta name="twitter:image" content="https://www.roxi-officiel.be/photos/og-image.jpg">
 <meta name="twitter:image:alt" content="Cocktail signature servi au ROXI, bar-restaurant rue du Bailli, Châtelain">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,16 +77,16 @@
   "@graph": [
     {
       "@type": "Restaurant",
-      "@id": "https://DOMAINE_FINAL/#restaurant",
+      "@id": "https://www.roxi-officiel.be/#restaurant",
       "name": "ROXI",
       "alternateName": "ROXI Bailli",
       "description": "Bar-restaurant au cœur du Châtelain à Ixelles. Cuisine belge, cocktails signature, terrasse plein sud. Ouvert 7j/7 dès 10h30.",
-      "url": "https://DOMAINE_FINAL/",
-      "logo": "https://DOMAINE_FINAL/logos/roxi-logo-2048.png",
+      "url": "https://www.roxi-officiel.be/",
+      "logo": "https://www.roxi-officiel.be/logos/roxi-logo-2048.png",
       "image": [
-        "https://DOMAINE_FINAL/photos/og-image.jpg",
-        "https://DOMAINE_FINAL/photos/photo-cocktail.webp",
-        "https://DOMAINE_FINAL/photos/photo-plat.webp"
+        "https://www.roxi-officiel.be/photos/og-image.jpg",
+        "https://www.roxi-officiel.be/photos/photo-cocktail.webp",
+        "https://www.roxi-officiel.be/photos/photo-plat.webp"
       ],
       "telephone": "+3226461792",
       "email": "theroxi2018@gmail.com",
@@ -123,7 +123,7 @@
         {"@type": "Place", "name": "Quartier du Châtelain"}
       ],
       "hasMap": "https://www.google.com/maps?q=Rue+du+Bailli+82,+1050+Ixelles,+Bruxelles",
-      "hasMenu": {"@id": "https://DOMAINE_FINAL/#menu"},
+      "hasMenu": {"@id": "https://www.roxi-officiel.be/#menu"},
       "potentialAction": {
         "@type": "ReserveAction",
         "target": {
@@ -134,7 +134,7 @@
     },
     {
       "@type": "Menu",
-      "@id": "https://DOMAINE_FINAL/#menu",
+      "@id": "https://www.roxi-officiel.be/#menu",
       "name": "Carte ROXI",
       "inLanguage": "fr-BE",
       "hasMenuSection": [
@@ -181,11 +181,11 @@
     },
     {
       "@type": "WebSite",
-      "@id": "https://DOMAINE_FINAL/#website",
-      "url": "https://DOMAINE_FINAL/",
+      "@id": "https://www.roxi-officiel.be/#website",
+      "url": "https://www.roxi-officiel.be/",
       "name": "ROXI · Bar & Restaurant · Châtelain · Bruxelles",
       "inLanguage": "fr-BE",
-      "publisher": {"@id": "https://DOMAINE_FINAL/#restaurant"}
+      "publisher": {"@id": "https://www.roxi-officiel.be/#restaurant"}
     }
   ]
 }

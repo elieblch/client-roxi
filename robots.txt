@@ -1,6 +1,6 @@
 # ============================================================
 # robots.txt — ROXI (version-couleur)
-# TODO migration domaine : remplacer DOMAINE_FINAL par le domaine custom (.be)
+# TODO migration domaine : remplacer www.roxi-officiel.be par le domaine custom (.be)
 #   puis retirer la meta noindex de index.html (cf. notes projet).
 # ============================================================
 
@@ -26,4 +26,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://DOMAINE_FINAL/sitemap.xml
+Sitemap: https://www.roxi-officiel.be/sitemap.xml
