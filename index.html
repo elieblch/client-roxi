@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <!--
   =====================================================================
-  @canonical-domain: https://www.roxi-officiel.be   (PLACEHOLDER)
-  → Toutes les URLs absolues utilisent le placeholder www.roxi-officiel.be.
-    Le jour où le domaine custom (.be) est branché, remplacer TOUTES les
-    occurrences en une fois :
-
-    grep -rln "www.roxi-officiel.be" . --include='*.html' --include='*.xml' --include='*.txt' \
-      | xargs sed -i '' 's|www.roxi-officiel.be|www.roxi.be|g'
-
-    Endroits concernés :
-    - <link rel="canonical">      (head)
-    - og:url, og:image, twitter:image   (Open Graph / Twitter)
-    - JSON-LD : @id, url, logo, image (@graph)
-    - robots.txt (ligne Sitemap:) + sitemap.xml (<loc>)
-    - retirer la balise <meta name="robots" content="noindex, nofollow">
+  @canonical-domain: https://www.roxi-officiel.be
+  Site en production, public et indexable depuis le go-live (2026-06-22).
   =====================================================================
 -->
 <html lang="fr">
@@ -25,12 +13,10 @@
 <title>ROXI · Bar à cocktails & Restaurant · Châtelain, Bruxelles</title>
 <meta name="description" content="Bar à cocktails & restaurant ROXI au Châtelain, rue du Bailli à Ixelles (Bruxelles). Cuisine belge, cocktails maison, terrasse plein sud. Ouvert 7j/7 dès 10h30.">
 
-<!-- PROVISOIRE preview Vercel : noindex pour éviter d'indexer la preview Vercel.
-     🔴 À RETIRER le jour de la bascule sur le domaine custom (voir notes projet section 6). -->
-<meta name="robots" content="noindex, nofollow">
+<!-- Go-live 2026-06-22 : site public et indexable sur www.roxi-officiel.be -->
+<meta name="robots" content="index, follow">
 
 <!-- Canonical -->
-<!-- TODO migration domaine : remplacer www.roxi-officiel.be par le domaine custom (.be) -->
 <link rel="canonical" href="https://www.roxi-officiel.be/">
 
 <!-- Preload LCP : hero image (critical perf, responsive) -->
