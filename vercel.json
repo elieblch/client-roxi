@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "client-roxi.vercel.app" }],
+      "destination": "https://www.roxi-officiel.be/:path*",
+      "permanent": true
+    }
+  ]
+}
